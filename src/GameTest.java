@@ -19,4 +19,9 @@ public class GameTest {
         assertEquals("rock", game.getUserInput());
     }
 
+    @Test
+    public void printMessageToConsole() {
+        game.print("winner");
+        assertEquals("winner", fakeConsole.messagePrinted());
+    }
 }

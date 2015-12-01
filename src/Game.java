@@ -9,4 +9,9 @@ public class Game {
     public String getUserInput() {
         return fakeConsole.read();
     }
+
+
+    public void print(String message) {
+        fakeConsole.print(message);
+    }
 }
