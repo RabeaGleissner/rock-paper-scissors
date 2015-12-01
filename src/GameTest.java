@@ -1,13 +1,21 @@
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GameTest {
 
+    private FakeConsole fakeConsole;
+    private Game game;
+
+    @Before
+    public void setup() {
+        fakeConsole = new FakeConsole();
+        game = new Game(fakeConsole);
+    }
+
     @Test
     public void getUserInput() {
-        FakeConsole fakeConsole = new FakeConsole();
         fakeConsole.provideUserChoice("rock");
-        Game game = new Game(fakeConsole);
         assertEquals("rock", game.getUserInput());
     }
 
