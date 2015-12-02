@@ -1,19 +1,25 @@
 import java.util.Objects;
 
 public class UserInterface {
+
+    String PROMPT = "\nPlease enter your choice: (R = rock, S = scissors, P = paper) or type E for exit";
+    String DRAW = "It's a draw!";
+    String WINNER = "Winner: ";
+    String COMPUTER_CHOICE = "Computer choice was: ";
+
     public String askForHumanChoice() {
-        return "Please enter your choice: (R = rock, S = scissors, P = paper) or type E for exit";
+        return PROMPT;
     }
 
     public String announceGameEnd(String winner) {
         if (Objects.equals(winner, "draw")) {
-            return "It's a draw!";
+            return DRAW;
         } else {
-            return "Winner: " + winner;
+            return WINNER + winner;
         }
     }
 
     public String showComputerChoice(String choice) {
-        return "Computer choice was: " + choice;
+        return COMPUTER_CHOICE + choice;
     }
 }

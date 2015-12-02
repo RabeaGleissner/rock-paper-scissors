@@ -14,7 +14,7 @@ public class UserInterfaceTest {
 
     @Test
     public void askForHumanChoice() {
-        assertEquals("Please enter your choice: (R = rock, S = scissors, P = paper) or type E for exit",
+        assertEquals("\nPlease enter your choice: (R = rock, S = scissors, P = paper) or type E for exit",
                 userInterface.askForHumanChoice());
     }
 
