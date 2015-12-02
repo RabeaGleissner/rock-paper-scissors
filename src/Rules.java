@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Rules {
 
     private String humanChoice;
@@ -11,9 +13,9 @@ public class Rules {
     public String findWinner() {
         String winner = rules();
 
-        if (winner == humanChoice) {
+        if (Objects.equals(winner, humanChoice)) {
             return "human";
-        } else if (winner == computerChoice) {
+        } else if (Objects.equals(winner, computerChoice)) {
             return "computer";
         } else if (draw()) {
             return "draw";
@@ -36,31 +38,31 @@ public class Rules {
     }
 
     private boolean paperWins() {
-        if ( (humanChoice == "rock" && computerChoice == "paper") ||
-                (humanChoice == "paper" && computerChoice == "rock") ) {
+        if ( (Objects.equals(humanChoice, "rock") && Objects.equals(computerChoice, "paper")) ||
+                (Objects.equals(humanChoice, "paper") && Objects.equals(computerChoice, "rock")) ) {
             return true;
         }
         return false;
     }
 
     private boolean rockWins() {
-        if ( (humanChoice == "rock" && computerChoice == "scissors") ||
-                (humanChoice == "scissors" && computerChoice == "rock") ) {
+        if ( (Objects.equals(humanChoice, "rock") && Objects.equals(computerChoice, "scissors")) ||
+                (Objects.equals(humanChoice, "scissors") && Objects.equals(computerChoice, "rock")) ) {
             return true;
         }
         return false;
     }
 
     private boolean scissorsWin() {
-        if ( (humanChoice == "paper" && computerChoice == "scissors") ||
-                (humanChoice == "scissors" && computerChoice == "paper") ) {
+        if ( (Objects.equals(humanChoice, "paper") && Objects.equals(computerChoice, "scissors")) ||
+                (Objects.equals(humanChoice, "scissors") && Objects.equals(computerChoice, "paper")) ) {
             return true;
         }
         return false;
     }
 
     private boolean draw() {
-        if ( humanChoice == computerChoice) {
+        if (Objects.equals(humanChoice, computerChoice)) {
             return true;
         }
         return false;
