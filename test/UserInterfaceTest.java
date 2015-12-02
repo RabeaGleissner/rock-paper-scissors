@@ -32,4 +32,9 @@ public class UserInterfaceTest {
     public void announceComputerAsWinner() {
         assertEquals("Winner: computer", userInterface.announceGameEnd("computer"));
     }
+
+    @Test
+    public void showComputerChoice() {
+        assertEquals("Computer choice was: rock", userInterface.showComputerChoice("rock"));
+    }
 }

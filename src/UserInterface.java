@@ -12,4 +12,8 @@ public class UserInterface {
             return "Winner: " + winner;
         }
     }
+
+    public String showComputerChoice(String choice) {
+        return "Computer choice was: " + choice;
+    }
 }
