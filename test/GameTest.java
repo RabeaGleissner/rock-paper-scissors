@@ -38,4 +38,12 @@ public class GameTest {
         String computerChoice = "rock";
         assertEquals("human", game.findWinner(humanChoice, computerChoice));
     }
+
+    @Test
+    public void computerChoiceRockWins() {
+        String humanChoice = "scissors";
+        String computerChoice = "rock";
+        assertEquals("computer", game.findWinner(humanChoice, computerChoice));
+
+    }
 }

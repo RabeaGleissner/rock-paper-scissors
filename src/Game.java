@@ -23,8 +23,10 @@ public class Game {
 
         if (winner == humanChoice) {
             return "human";
-        } else {
+        } else if (winner == computerChoice) {
             return "computer";
+        } else {
+            return "something went wrong";
         }
     }
 
