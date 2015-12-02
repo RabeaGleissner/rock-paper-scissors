@@ -1,8 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.Computer;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class ComputerPlayerTest {
     private ComputerPlayer computerPlayer;
