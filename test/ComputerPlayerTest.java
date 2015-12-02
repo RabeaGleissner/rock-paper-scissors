@@ -14,6 +14,10 @@ public class ComputerPlayerTest {
 
     @Test
     public void generatesMove() {
-        assertEquals("rock", computerPlayer.generateMove());
+        assertTrue(
+                ("rock").equals(computerPlayer.generateMove()) ||
+                ("scissors").equals(computerPlayer.generateMove()) ||
+                ("paper").equals(computerPlayer.generateMove())
+        );
     }
 }
