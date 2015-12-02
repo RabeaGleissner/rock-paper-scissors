@@ -24,4 +24,18 @@ public class GameTest {
         game.print("winner");
         assertEquals("winner", fakeConsole.messagePrinted());
     }
+
+    @Test
+    public void computerChoicePaperWins() {
+        String humanChoice = "rock";
+        String computerChoice = "paper";
+        assertEquals("computer", game.findWinner(humanChoice, computerChoice));
+    }
+
+    @Test
+    public void humanChoicePaperWins() {
+        String humanChoice = "paper";
+        String computerChoice = "rock";
+        assertEquals("human", game.findWinner(humanChoice, computerChoice));
+    }
 }
