@@ -21,6 +21,8 @@ public class Game {
             winner = "paper";
         } else if (rockWinRules(humanChoice, computerChoice)) {
             winner = "rock";
+        } else if (scissorWinRules(humanChoice, computerChoice)) {
+           winner = "scissors";
         }
 
         if (winner == humanChoice) {
@@ -28,7 +30,7 @@ public class Game {
         } else if (winner == computerChoice) {
             return "computer";
         } else {
-            return "something went wrong";
+            return "draw";
         }
     }
 
@@ -43,6 +45,14 @@ public class Game {
     private boolean rockWinRules(String humanChoice, String computerChoice) {
         if ( (humanChoice == "rock" && computerChoice == "scissors") ||
                 (humanChoice == "scissors" && computerChoice == "rock") ) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean scissorWinRules(String humanChoice, String computerChoice) {
+        if ( (humanChoice == "paper" && computerChoice == "scissors") ||
+                (humanChoice == "scissors" && computerChoice == "paper") ) {
             return true;
         }
         return false;

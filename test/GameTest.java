@@ -52,4 +52,25 @@ public class GameTest {
         String computerChoice = "scissors";
         assertEquals("human", game.findWinner(humanChoice, computerChoice));
     }
+
+    @Test
+    public void computerChoiceScissorsWins() {
+        String humanChoice = "paper";
+        String computerChoice = "scissors";
+        assertEquals("computer", game.findWinner(humanChoice, computerChoice));
+    }
+
+    @Test
+    public void humanChoiceScissorsWins() {
+        String humanChoice = "scissors";
+        String computerChoice = "paper";
+        assertEquals("human", game.findWinner(humanChoice, computerChoice));
+    }
+
+    @Test
+    public void drawWithPaper() {
+        String humanChoice = "paper";
+        String computerChoice = "paper";
+        assertEquals("draw", game.findWinner(humanChoice, computerChoice));
+    }
 }
