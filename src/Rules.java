@@ -38,33 +38,21 @@ public class Rules {
     }
 
     private boolean paperWins() {
-        if ( (Objects.equals(humanChoice, "rock") && Objects.equals(computerChoice, "paper")) ||
-                (Objects.equals(humanChoice, "paper") && Objects.equals(computerChoice, "rock")) ) {
-            return true;
-        }
-        return false;
+        return (Objects.equals(humanChoice, "rock") && Objects.equals(computerChoice, "paper")) ||
+                (Objects.equals(humanChoice, "paper") && Objects.equals(computerChoice, "rock"));
     }
 
     private boolean rockWins() {
-        if ( (Objects.equals(humanChoice, "rock") && Objects.equals(computerChoice, "scissors")) ||
-                (Objects.equals(humanChoice, "scissors") && Objects.equals(computerChoice, "rock")) ) {
-            return true;
-        }
-        return false;
+        return (Objects.equals(humanChoice, "rock") && Objects.equals(computerChoice, "scissors")) ||
+                (Objects.equals(humanChoice, "scissors") && Objects.equals(computerChoice, "rock"));
     }
 
     private boolean scissorsWin() {
-        if ( (Objects.equals(humanChoice, "paper") && Objects.equals(computerChoice, "scissors")) ||
-                (Objects.equals(humanChoice, "scissors") && Objects.equals(computerChoice, "paper")) ) {
-            return true;
-        }
-        return false;
+        return (Objects.equals(humanChoice, "paper") && Objects.equals(computerChoice, "scissors")) ||
+                (Objects.equals(humanChoice, "scissors") && Objects.equals(computerChoice, "paper"));
     }
 
     private boolean draw() {
-        if (Objects.equals(humanChoice, computerChoice)) {
-            return true;
-        }
-        return false;
+        return Objects.equals(humanChoice, computerChoice);
     }
 }
