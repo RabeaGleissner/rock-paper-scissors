@@ -17,8 +17,7 @@ public class Game {
     public String findWinner(String humanChoice, String computerChoice) {
         String winner = "";
 
-        if ( (humanChoice == "rock" && computerChoice == "paper") ||
-             (humanChoice == "paper" && computerChoice == "rock")) {
+        if ( paperWinRules(humanChoice, computerChoice) ) {
             winner = "paper";
         }
 
@@ -27,5 +26,13 @@ public class Game {
         } else {
             return "computer";
         }
+    }
+
+    private boolean paperWinRules(String humanChoice, String computerChoice) {
+       if ( (humanChoice == "rock" && computerChoice == "paper") ||
+                (humanChoice == "paper" && computerChoice == "rock") ) {
+           return true;
+       }
+        return false;
     }
 }
