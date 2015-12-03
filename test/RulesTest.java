@@ -47,4 +47,9 @@ public class RulesTest {
         assertEquals("draw", rules.findWinner());
     }
 
+    @Test
+    public void errorMessage() {
+        Rules rules = new Rules(Move.EXIT, Move.PAPER);
+        assertEquals("something went wrong", rules.findWinner());
+    }
 }

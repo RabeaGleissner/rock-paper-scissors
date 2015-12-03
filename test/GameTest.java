@@ -14,9 +14,27 @@ public class GameTest {
     }
 
     @Test
-    public void getUserInput() {
+    public void getUserInputRock() {
         fakeConsole.provideUserChoice("R");
         assertEquals(Move.ROCK, game.getUserInput());
+    }
+
+    @Test
+    public void getUserInputScissors() {
+        fakeConsole.provideUserChoice("S");
+        assertEquals(Move.SCISSORS, game.getUserInput());
+    }
+
+    @Test
+    public void getUserInputPaper() {
+        fakeConsole.provideUserChoice("P");
+        assertEquals(Move.PAPER, game.getUserInput());
+    }
+
+    @Test
+    public void getUserInputExit() {
+        fakeConsole.provideUserChoice("E");
+        assertEquals(Move.EXIT, game.getUserInput());
     }
 
     @Test
