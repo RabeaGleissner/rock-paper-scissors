@@ -1,16 +1,16 @@
 public class FakeRandomizer implements Randomizer {
 
-    private String randomMove;
+    private Enum randomMove;
 
     public FakeRandomizer() {
-        randomMove = "";
+        randomMove = null;
     }
 
-    public String getRandomMove() {
+    public Enum getRandomMove() {
         return randomMove;
     }
 
-    public void setFakeRandomMove(String move) {
+    public void setFakeRandomMove(Enum move) {
         randomMove = move;
     }
 

@@ -16,7 +16,7 @@ public class GameTest {
     @Test
     public void getUserInput() {
         fakeConsole.provideUserChoice("R");
-        assertEquals("rock", game.getUserInput());
+        assertEquals(Move.ROCK, game.getUserInput());
     }
 
     @Test
@@ -24,5 +24,4 @@ public class GameTest {
         game.print("winner");
         assertEquals("winner", fakeConsole.messagePrinted());
     }
-
 }

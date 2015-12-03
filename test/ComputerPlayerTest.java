@@ -16,18 +16,18 @@ public class ComputerPlayerTest {
 
     @Test
     public void generatesMove() {
-        fakeRandomizer.setFakeRandomMove("rock");
+        fakeRandomizer.setFakeRandomMove(Move.ROCK);
         assertTrue(
-                ("rock").equals(computerPlayer.generateMove()) ||
-                ("scissors").equals(computerPlayer.generateMove()) ||
-                ("paper").equals(computerPlayer.generateMove())
+                (Move.ROCK).equals(computerPlayer.generateMove()) ||
+                (Move.SCISSORS).equals(computerPlayer.generateMove()) ||
+                (Move.PAPER).equals(computerPlayer.generateMove())
         );
     }
 
     @Test
     public void generateRandomMove() {
-        fakeRandomizer.setFakeRandomMove("rock");
-        assertEquals("rock", computerPlayer.generateMove());
+        fakeRandomizer.setFakeRandomMove(Move.ROCK);
+        assertEquals(Move.ROCK, computerPlayer.generateMove());
     }
 
 

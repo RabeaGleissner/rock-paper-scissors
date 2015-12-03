@@ -1,11 +1,11 @@
 public class RealRandomizer implements Randomizer {
 
-    public String getRandomMove() {
+    public Enum getRandomMove() {
         return provideMove();
     }
 
-    private String provideMove() {
-        String[] options = {"rock", "paper", "scissors"};
+    private Enum provideMove() {
+        Enum[] options = {Move.ROCK, Move.PAPER, Move.SCISSORS};
         int index = (int) (Math.random() * options.length);
         return options[index];
     }

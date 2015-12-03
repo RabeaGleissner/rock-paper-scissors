@@ -7,17 +7,17 @@ public class Game {
         this.console = console;
     }
 
-    public String getUserInput() {
+    public Enum getUserInput() {
         String move = console.read();
-        String returnedMove = "";
+        Enum returnedMove = null;
         switch (move) {
-            case "R": returnedMove = "rock";
+            case "R": returnedMove = Move.ROCK;
                 break;
-            case "S": returnedMove ="scissors";
+            case "S": returnedMove = Move.SCISSORS;
                 break;
-            case "P": returnedMove = "paper";
+            case "P": returnedMove = Move.PAPER;
                 break;
-            case "E": returnedMove = "exit";
+            case "E": returnedMove = Move.EXIT;
                 break;
         }
         return returnedMove;
