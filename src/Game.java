@@ -8,7 +8,19 @@ public class Game {
     }
 
     public String getUserInput() {
-        return console.read();
+        String move = console.read();
+        String returnedMove = "";
+        switch (move) {
+            case "R": returnedMove = "rock";
+                break;
+            case "S": returnedMove ="scissors";
+                break;
+            case "P": returnedMove = "paper";
+                break;
+            case "E": returnedMove = "exit";
+                break;
+        }
+        return returnedMove;
     }
 
     public void print(String message) {
