@@ -1,13 +1,16 @@
 public class ComputerPlayer {
+
+    private final Randomizer randomizer;
+
+    public ComputerPlayer(Randomizer randomizer) {
+        this.randomizer = randomizer;
+    }
+
     public String generateMove() {
 
-        return getRandomMove();
+        return randomizer.getRandomMove();
     }
 
-    private String getRandomMove() {
-        String[] options = {"rock", "paper", "scissors"};
-        int index = (int) (Math.random() * options.length);
-        return options[index];
-    }
+
 }
 
