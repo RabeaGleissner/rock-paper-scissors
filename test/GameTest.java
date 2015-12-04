@@ -10,7 +10,9 @@ public class GameTest {
     @Before
     public void setup() {
         fakeConsole = new FakeConsole();
-        game = new Game(fakeConsole);
+        UserInterface userInterface = new UserInterface();
+        ComputerPlayer computerPlayer = new ComputerPlayer(new FakeRandomizer());
+        game = new Game(fakeConsole, userInterface, computerPlayer);
     }
 
     @Test

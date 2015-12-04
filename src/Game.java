@@ -1,10 +1,14 @@
 public class Game {
 
     private final Console console;
+    private final UserInterface userInterface;
+    private final ComputerPlayer computerPlayer;
 
 
-    public Game(Console console) {
+    public Game(Console console, UserInterface userInterface, ComputerPlayer computerPlayer) {
         this.console = console;
+        this.userInterface = userInterface;
+        this.computerPlayer = computerPlayer;
     }
 
     public Enum getUserInput() {
