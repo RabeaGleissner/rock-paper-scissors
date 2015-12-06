@@ -37,4 +37,10 @@ public class Game {
         return getUserInput();
     }
 
+    public void playOnce(Enum humanChoice) {
+        Enum computerChoice = computerPlayer.generateMove();
+        Rules rules = new Rules(humanChoice, computerChoice);
+        print(userInterface.showComputerChoice(computerChoice.toString()));
+        print(userInterface.announceGameEnd(rules.findWinner()));
+    }
 }

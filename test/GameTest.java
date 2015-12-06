@@ -8,13 +8,15 @@ public class GameTest {
     private FakeConsole fakeConsole;
     private Game game;
     private ComputerPlayer computerPlayer;
+    private FakeRandomizer fakeRandomizer;
 
 
     @Before
     public void setup() {
         fakeConsole = new FakeConsole();
+        fakeRandomizer = new FakeRandomizer();
         UserInterface userInterface = new UserInterface();
-        computerPlayer = new ComputerPlayer(new FakeRandomizer());
+        computerPlayer = new ComputerPlayer(fakeRandomizer);
         game = new Game(fakeConsole, userInterface, computerPlayer);
     }
 
@@ -54,4 +56,10 @@ public class GameTest {
         assertEquals(Move.ROCK, game.askPlayerAndReturnChoice());
     }
 
+    @Test
+    public void playsOneRound() {
+        fakeRandomizer.setFakeRandomMove(Move.ROCK);
+        game.playOnce(Move.PAPER);
+        assertEquals("Winner: human", fakeConsole.messagePrinted());
+    }
 }
