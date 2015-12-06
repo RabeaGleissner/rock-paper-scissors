@@ -32,6 +32,19 @@ public class Game {
     }
 
 
+    public void play() {
+        while (true) {
+            Enum humanChoice = askPlayerAndReturnChoice();
+
+            if (humanChoice.equals(Move.EXIT)) {
+                console.print(userInterface.sayBye());
+                break;
+            }
+
+            playOnce(humanChoice);
+        }
+    }
+
     public Enum askPlayerAndReturnChoice() {
         print(userInterface.askForHumanChoice());
         return getUserInput();

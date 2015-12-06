@@ -52,8 +52,10 @@ public class GameTest {
 
     @Test
     public void asksPlayerForInputAndReturnsChoice() {
+        String userPrompt = "\nPlease enter your choice: (R = rock, S = scissors, P = paper) or type E for exit";
         fakeConsole.provideUserChoice("R");
         assertEquals(Move.ROCK, game.askPlayerAndReturnChoice());
+        assertEquals(userPrompt, fakeConsole.messagePrinted());
     }
 
     @Test
@@ -61,5 +63,12 @@ public class GameTest {
         fakeRandomizer.setFakeRandomMove(Move.ROCK);
         game.playOnce(Move.PAPER);
         assertEquals("Winner: human", fakeConsole.messagePrinted());
+    }
+
+    @Test
+    public void nothingIsPrintedIfUserExits() {
+        fakeConsole.provideUserChoice("E");
+        game.play();
+        assertEquals("See you next time!", fakeConsole.messagePrinted());
     }
 }
