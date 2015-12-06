@@ -1,17 +1,20 @@
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class GameTest {
 
     private FakeConsole fakeConsole;
     private Game game;
+    private ComputerPlayer computerPlayer;
+
 
     @Before
     public void setup() {
         fakeConsole = new FakeConsole();
         UserInterface userInterface = new UserInterface();
-        ComputerPlayer computerPlayer = new ComputerPlayer(new FakeRandomizer());
+        computerPlayer = new ComputerPlayer(new FakeRandomizer());
         game = new Game(fakeConsole, userInterface, computerPlayer);
     }
 
@@ -44,4 +47,11 @@ public class GameTest {
         game.print("winner");
         assertEquals("winner", fakeConsole.messagePrinted());
     }
+
+    @Test
+    public void asksPlayerForInputAndReturnsChoice() {
+        fakeConsole.provideUserChoice("R");
+        assertEquals(Move.ROCK, game.askPlayerAndReturnChoice());
+    }
+
 }

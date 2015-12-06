@@ -31,4 +31,10 @@ public class Game {
         console.print(message);
     }
 
+
+    public Enum askPlayerAndReturnChoice() {
+        print(userInterface.askForHumanChoice());
+        return getUserInput();
+    }
+
 }
