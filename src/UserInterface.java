@@ -6,6 +6,7 @@ public class UserInterface {
     String DRAW = "It's a draw!";
     String WINNER = "Winner: ";
     String COMPUTER_CHOICE = "Computer choice was: ";
+    String GOODBYE = "See you next time!";
 
     public String askForHumanChoice() {
         return PROMPT;
@@ -21,5 +22,9 @@ public class UserInterface {
 
     public String showComputerChoice(String choice) {
         return COMPUTER_CHOICE + choice;
+    }
+
+    public String sayBye() {
+        return GOODBYE;
     }
 }

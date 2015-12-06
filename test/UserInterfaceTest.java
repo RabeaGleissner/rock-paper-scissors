@@ -37,4 +37,9 @@ public class UserInterfaceTest {
     public void showComputerChoice() {
         assertEquals("Computer choice was: rock", userInterface.showComputerChoice("rock"));
     }
+
+    @Test
+    public void sayGoodBye() {
+        assertEquals("See you next time!", userInterface.sayBye());
+    }
 }
