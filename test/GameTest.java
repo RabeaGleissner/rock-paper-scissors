@@ -7,7 +7,6 @@ public class GameTest {
 
     private FakeConsole fakeConsole;
     private Game game;
-    private ComputerPlayer computerPlayer;
     private FakeRandomizer fakeRandomizer;
 
 
@@ -16,7 +15,7 @@ public class GameTest {
         fakeConsole = new FakeConsole();
         fakeRandomizer = new FakeRandomizer();
         UserInterface userInterface = new UserInterface();
-        computerPlayer = new ComputerPlayer(fakeRandomizer);
+        ComputerPlayer computerPlayer = new ComputerPlayer(fakeRandomizer);
         game = new Game(fakeConsole, userInterface, computerPlayer);
     }
 
