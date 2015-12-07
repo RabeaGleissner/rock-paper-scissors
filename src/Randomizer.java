@@ -1,3 +1,3 @@
 public interface Randomizer {
-    Enum getRandomMove();
+    Move getRandomMove();
 }

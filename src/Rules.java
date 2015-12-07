@@ -2,20 +2,20 @@ import java.util.Objects;
 
 public class Rules {
 
-    private Enum humanChoice;
-    private Enum computerChoice;
+    private Move humanChoice;
+    private Move computerChoice;
 
-    public Rules(Enum humanChoice, Enum computerChoice) {
+    public Rules(Move humanChoice, Move computerChoice) {
         this.humanChoice = humanChoice;
         this.computerChoice = computerChoice;
     }
 
     public String findWinner() {
-        Enum winningMove = winningMove();
+        Move winningMove = winningMove();
 
-        if (Objects.equals(winningMove, humanChoice)) {
+        if (winningMove == humanChoice) {
             return "human";
-        } else if (Objects.equals(winningMove, computerChoice)) {
+        } else if (winningMove == computerChoice) {
             return "computer";
         } else if (draw()) {
             return "draw";
@@ -24,7 +24,7 @@ public class Rules {
         }
     }
 
-    private Enum winningMove() {
+    private Move winningMove() {
         if (paperWins() ) {
             return Move.PAPER;
         } else if (rockWins()) {
@@ -37,18 +37,18 @@ public class Rules {
     }
 
     private boolean paperWins() {
-        return (Objects.equals(humanChoice, Move.ROCK) && Objects.equals(computerChoice, Move.PAPER)) ||
-                (Objects.equals(humanChoice, Move.PAPER) && Objects.equals(computerChoice, Move.ROCK));
+        return ((humanChoice == Move.ROCK) && (computerChoice == Move.PAPER)) ||
+                ((humanChoice  == Move.PAPER) && (computerChoice == Move.ROCK));
     }
 
     private boolean rockWins() {
-        return (Objects.equals(humanChoice, Move.ROCK) && Objects.equals(computerChoice, Move.SCISSORS)) ||
-                (Objects.equals(humanChoice, Move.SCISSORS) && Objects.equals(computerChoice, Move.ROCK));
+        return ((humanChoice == Move.ROCK) && (computerChoice == Move.SCISSORS)) ||
+                ((humanChoice == Move.SCISSORS) && (computerChoice == Move.ROCK));
     }
 
     private boolean scissorsWin() {
-        return (Objects.equals(humanChoice, Move.PAPER) && Objects.equals(computerChoice, Move.SCISSORS)) ||
-                (Objects.equals(humanChoice, Move.SCISSORS) && Objects.equals(computerChoice, Move.PAPER));
+        return ((humanChoice == Move.PAPER) && (computerChoice == Move.SCISSORS)) ||
+                ((humanChoice == Move.SCISSORS) && (computerChoice == Move.PAPER));
     }
 
     private boolean draw() {

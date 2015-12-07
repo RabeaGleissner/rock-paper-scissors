@@ -1,16 +1,16 @@
 public class FakeRandomizer implements Randomizer {
 
-    private Enum randomMove;
+    private Move randomMove;
 
     public FakeRandomizer() {
         randomMove = null;
     }
 
-    public Enum getRandomMove() {
+    public Move getRandomMove() {
         return randomMove;
     }
 
-    public void setFakeRandomMove(Enum move) {
+    public void setFakeRandomMove(Move move) {
         randomMove = move;
     }
 

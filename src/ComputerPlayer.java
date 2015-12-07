@@ -6,7 +6,7 @@ public class ComputerPlayer {
         this.randomizer = randomizer;
     }
 
-    public Enum generateMove() {
+    public Move generateMove() {
 
         return randomizer.getRandomMove();
     }

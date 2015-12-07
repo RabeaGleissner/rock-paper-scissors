@@ -13,7 +13,7 @@ public class Game {
 
     public void play() {
         while (true) {
-            Enum humanChoice = askPlayerAndReturnChoice();
+            Move humanChoice = askPlayerAndReturnChoice();
 
             if (userQuits(humanChoice)) {
                 console.print(userInterface.sayBye());
@@ -23,15 +23,15 @@ public class Game {
         }
     }
 
-    public void playOnce(Enum humanChoice) {
-        Enum computerChoice = computerPlayer.generateMove();
+    public void playOnce(Move humanChoice) {
+        Move computerChoice = computerPlayer.generateMove();
         Rules rules = new Rules(humanChoice, computerChoice);
         communicateWinner(computerChoice, rules);
     }
 
-    public Enum getUserInput() {
+    public Move getUserInput() {
         String move = console.read();
-        Enum returnedMove = null;
+        Move returnedMove = null;
         switch (move) {
             case "R": returnedMove = Move.ROCK;
                 break;
@@ -45,7 +45,7 @@ public class Game {
         return returnedMove;
     }
 
-    private void communicateWinner(Enum computerChoice, Rules rules) {
+    private void communicateWinner(Move computerChoice, Rules rules) {
         print(userInterface.showComputerChoice(computerChoice.toString()));
         print(userInterface.announceGameEnd(rules.findWinner()));
     }
@@ -54,16 +54,16 @@ public class Game {
         console.print(message);
     }
 
-    private Enum askPlayerAndReturnChoice() {
+    private Move askPlayerAndReturnChoice() {
         print(userInterface.askForHumanChoice());
-        Enum userInput = getUserInput();
+        Move userInput = getUserInput();
         while (userInput == null) {
             play();
         }
         return userInput;
     }
 
-    private boolean userQuits(Enum humanChoice) {
+    private boolean userQuits(Move humanChoice) {
         return humanChoice.equals(Move.EXIT);
     }
 
