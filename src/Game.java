@@ -56,7 +56,11 @@ public class Game {
 
     private Enum askPlayerAndReturnChoice() {
         print(userInterface.askForHumanChoice());
-        return getUserInput();
+        Enum userInput = getUserInput();
+        while (userInput == null) {
+            play();
+        }
+        return userInput;
     }
 
     private boolean userQuits(Enum humanChoice) {
