@@ -11,11 +11,11 @@ public class Rules {
     }
 
     public String findWinner() {
-        Enum winner = rules();
+        Enum winningMove = winningMove();
 
-        if (Objects.equals(winner, humanChoice)) {
+        if (Objects.equals(winningMove, humanChoice)) {
             return "human";
-        } else if (Objects.equals(winner, computerChoice)) {
+        } else if (Objects.equals(winningMove, computerChoice)) {
             return "computer";
         } else if (draw()) {
             return "draw";
@@ -24,7 +24,7 @@ public class Rules {
         }
     }
 
-    private Enum rules() {
+    private Enum winningMove() {
         if (paperWins() ) {
             return Move.PAPER;
         } else if (rockWins()) {
