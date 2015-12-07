@@ -27,7 +27,7 @@ public class Game {
         return returnedMove;
     }
 
-    public void print(String message) {
+    private void print(String message) {
         console.print(message);
     }
 
@@ -45,7 +45,7 @@ public class Game {
         }
     }
 
-    public Enum askPlayerAndReturnChoice() {
+    private Enum askPlayerAndReturnChoice() {
         print(userInterface.askForHumanChoice());
         return getUserInput();
     }
