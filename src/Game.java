@@ -11,6 +11,24 @@ public class Game {
         this.computerPlayer = computerPlayer;
     }
 
+    public void play() {
+        while (true) {
+            Enum humanChoice = askPlayerAndReturnChoice();
+
+            if (userQuits(humanChoice)) {
+                console.print(userInterface.sayBye());
+                break;
+            }
+            playOnce(humanChoice);
+        }
+    }
+
+    public void playOnce(Enum humanChoice) {
+        Enum computerChoice = computerPlayer.generateMove();
+        Rules rules = new Rules(humanChoice, computerChoice);
+        communicateWinner(computerChoice, rules);
+    }
+
     public Enum getUserInput() {
         String move = console.read();
         Enum returnedMove = null;
@@ -27,22 +45,13 @@ public class Game {
         return returnedMove;
     }
 
-    private void print(String message) {
-        console.print(message);
+    private void communicateWinner(Enum computerChoice, Rules rules) {
+        print(userInterface.showComputerChoice(computerChoice.toString()));
+        print(userInterface.announceGameEnd(rules.findWinner()));
     }
 
-
-    public void play() {
-        while (true) {
-            Enum humanChoice = askPlayerAndReturnChoice();
-
-            if (humanChoice.equals(Move.EXIT)) {
-                console.print(userInterface.sayBye());
-                break;
-            }
-
-            playOnce(humanChoice);
-        }
+    private void print(String message) {
+        console.print(message);
     }
 
     private Enum askPlayerAndReturnChoice() {
@@ -50,10 +59,8 @@ public class Game {
         return getUserInput();
     }
 
-    public void playOnce(Enum humanChoice) {
-        Enum computerChoice = computerPlayer.generateMove();
-        Rules rules = new Rules(humanChoice, computerChoice);
-        print(userInterface.showComputerChoice(computerChoice.toString()));
-        print(userInterface.announceGameEnd(rules.findWinner()));
+    private boolean userQuits(Enum humanChoice) {
+        return humanChoice.equals(Move.EXIT);
     }
+
 }
