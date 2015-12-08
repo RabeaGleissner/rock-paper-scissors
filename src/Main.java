@@ -1,5 +1,3 @@
-package main;
-
 import game.ComputerPlayer;
 import game.Game;
 import UI.RealConsole;
