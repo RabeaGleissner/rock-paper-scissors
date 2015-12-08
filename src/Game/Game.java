@@ -13,17 +13,17 @@ public class Game {
 
     public void play() {
         while (true) {
-            Move humanChoice = userInterface.askPlayerAndReturnChoice();
+            Move humanChoice = userInterface.humanChoice();
 
             if (userQuits(humanChoice)) {
                 userInterface.sayBye();
                 break;
             }
-            playOnce(humanChoice);
+            getWinner(humanChoice);
         }
     }
 
-    public void playOnce(Move humanChoice) {
+    public void getWinner(Move humanChoice) {
         Move computerChoice = computerPlayer.generateMove();
         Rules rules = new Rules(humanChoice, computerChoice);
         userInterface.communicateWinner(computerChoice, rules);
