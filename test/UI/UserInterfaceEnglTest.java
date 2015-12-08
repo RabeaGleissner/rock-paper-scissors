@@ -1,5 +1,6 @@
 package UI;
-
+import game.FakeConsole;
+import game.Move;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,10 +8,12 @@ import static junit.framework.TestCase.assertEquals;
 
 public class UserInterfaceEnglTest {
     private UserInterfaceEngl userInterface;
+    private FakeConsole fakeConsole;
 
     @Before
     public void setup() {
-        userInterface = new UserInterfaceEngl();
+        fakeConsole = new FakeConsole();
+        userInterface = new UserInterfaceEngl(fakeConsole);
     }
 
     @Test
@@ -41,6 +44,31 @@ public class UserInterfaceEnglTest {
 
     @Test
     public void sayGoodBye() {
-        assertEquals("See you next time!", userInterface.sayBye());
+        assertEquals("See you next time!", userInterface.goodbye());
     }
+
+    @Test
+    public void getUserInputRock() {
+        fakeConsole.provideUserChoice("R");
+        assertEquals(Move.ROCK, userInterface.getUserInput());
+    }
+
+    @Test
+    public void getUserInputScissors() {
+        fakeConsole.provideUserChoice("S");
+        assertEquals(Move.SCISSORS, userInterface.getUserInput());
+    }
+
+    @Test
+    public void getUserInputPaper() {
+        fakeConsole.provideUserChoice("P");
+        assertEquals(Move.PAPER, userInterface.getUserInput());
+    }
+
+    @Test
+    public void getUserInputExit() {
+        fakeConsole.provideUserChoice("E");
+        assertEquals(Move.EXIT, userInterface.getUserInput());
+    }
+
 }

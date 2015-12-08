@@ -16,33 +16,9 @@ public class GameTest {
     public void setup() {
         fakeConsole = new FakeConsole();
         fakeRandomizer = new FakeRandomizer();
-        UserInterfaceEngl userInterface = new UserInterfaceEngl();
+        UserInterfaceEngl userInterface = new UserInterfaceEngl(fakeConsole);
         ComputerPlayer computerPlayer = new ComputerPlayer(fakeRandomizer);
-        game = new Game(fakeConsole, userInterface, computerPlayer);
-    }
-
-    @Test
-    public void getUserInputRock() {
-        fakeConsole.provideUserChoice("R");
-        assertEquals(Move.ROCK, game.getUserInput());
-    }
-
-    @Test
-    public void getUserInputScissors() {
-        fakeConsole.provideUserChoice("S");
-        assertEquals(Move.SCISSORS, game.getUserInput());
-    }
-
-    @Test
-    public void getUserInputPaper() {
-        fakeConsole.provideUserChoice("P");
-        assertEquals(Move.PAPER, game.getUserInput());
-    }
-
-    @Test
-    public void getUserInputExit() {
-        fakeConsole.provideUserChoice("E");
-        assertEquals(Move.EXIT, game.getUserInput());
+        game = new Game(userInterface, computerPlayer);
     }
 
     @Test

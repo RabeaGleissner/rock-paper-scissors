@@ -2,23 +2,21 @@ package game;
 
 public class Game {
 
-    private final Console console;
     private final UserInterface userInterface;
     private final ComputerPlayer computerPlayer;
 
 
-    public Game(Console console, UserInterface userInterface, ComputerPlayer computerPlayer) {
-        this.console = console;
+    public Game(UserInterface userInterface, ComputerPlayer computerPlayer) {
         this.userInterface = userInterface;
         this.computerPlayer = computerPlayer;
     }
 
     public void play() {
         while (true) {
-            Move humanChoice = askPlayerAndReturnChoice();
+            Move humanChoice = userInterface.askPlayerAndReturnChoice();
 
             if (userQuits(humanChoice)) {
-                console.print(userInterface.sayBye());
+                userInterface.sayBye();
                 break;
             }
             playOnce(humanChoice);
@@ -28,41 +26,7 @@ public class Game {
     public void playOnce(Move humanChoice) {
         Move computerChoice = computerPlayer.generateMove();
         Rules rules = new Rules(humanChoice, computerChoice);
-        communicateWinner(computerChoice, rules);
-    }
-
-    public Move getUserInput() {
-        String move = console.read();
-        Move returnedMove = null;
-        switch (move) {
-            case "R": returnedMove = Move.ROCK;
-                break;
-            case "S": returnedMove = Move.SCISSORS;
-                break;
-            case "P": returnedMove = Move.PAPER;
-                break;
-            case "E": returnedMove = Move.EXIT;
-                break;
-        }
-        return returnedMove;
-    }
-
-    private void communicateWinner(Move computerChoice, Rules rules) {
-        print(userInterface.showComputerChoice(computerChoice.toString()));
-        print(userInterface.announceGameEnd(rules.findWinner()));
-    }
-
-    private void print(String message) {
-        console.print(message);
-    }
-
-    private Move askPlayerAndReturnChoice() {
-        print(userInterface.askForHumanChoice());
-        Move userInput = getUserInput();
-        while (userInput == null) {
-            play();
-        }
-        return userInput;
+        userInterface.communicateWinner(computerChoice, rules);
     }
 
     private boolean userQuits(Move humanChoice) {
