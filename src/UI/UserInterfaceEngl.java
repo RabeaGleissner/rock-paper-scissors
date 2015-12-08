@@ -3,7 +3,6 @@ import game.Console;
 import game.Move;
 import game.Rules;
 import game.UserInterface;
-import java.util.Objects;
 
 public class UserInterfaceEngl implements UserInterface {
 
@@ -14,52 +13,31 @@ public class UserInterfaceEngl implements UserInterface {
     }
 
     String PROMPT = "\nPlease enter your choice: (R = rock, S = scissors, P = paper) or type E for exit";
-    String DRAW = "It's a draw!";
-    String WINNER = "Winner: ";
+    String DRAW = "\n\nIt's a draw!";
+    String WINNER = "\n\nWinner: ";
     String COMPUTER_CHOICE = "Computer choice was: ";
     String GOODBYE = "See you next time!";
 
-    public String askForHumanChoice() {
-        return PROMPT;
-    }
-
-    public String announceGameEnd(String winner) {
-        if (Objects.equals(winner, "draw")) {
-            return DRAW;
-        } else {
-            return WINNER + winner;
-        }
-    }
-
-    public String showComputerChoice(String choice) {
-        return COMPUTER_CHOICE + choice;
-    }
-
-    public String goodbye() {
-        return GOODBYE;
-    }
 
     public void sayBye() {
-        console.print(goodbye());
-    }
-
-    public void print(String message) {
-        console.print(message);
+        print(goodbye());
     }
 
     public void communicateWinner(Move computerChoice, Rules rules) {
-        print(showComputerChoice(computerChoice.toString()));
-        print(announceGameEnd(rules.findWinner()));
+        print(showComputerChoice(computerChoice.toString()) + announceGameEnd(rules.findWinner()));
     }
 
-    public Move askPlayerAndReturnChoice() {
+    public Move humanChoice() {
         print(askForHumanChoice());
-        Move userInput = getUserInput();
-        return userInput;
+        return getUserInput();
     }
 
-    public Move getUserInput() {
-        String move = console.read();
+    private Move getUserInput() {
+        String move = readUserInput();
+        return convertUserInputToEnum(move);
+    }
+
+    private Move convertUserInputToEnum(String move) {
         Move returnedMove = null;
         switch (move) {
             case "R": returnedMove = Move.ROCK;
@@ -72,6 +50,34 @@ public class UserInterfaceEngl implements UserInterface {
                 break;
         }
         return returnedMove;
+    }
+
+    private String readUserInput() {
+        return console.read();
+    }
+
+    private String askForHumanChoice() {
+        return PROMPT;
+    }
+
+    private String showComputerChoice(String choice) {
+        return COMPUTER_CHOICE + choice;
+    }
+
+    private String announceGameEnd(String winner) {
+        if (winner.equals("draw")) {
+            return DRAW;
+        } else {
+            return WINNER + winner;
+        }
+    }
+
+    private void print(String message) {
+        console.print(message);
+    }
+
+    private String goodbye() {
+        return GOODBYE;
     }
 }
 
