@@ -34,7 +34,13 @@ public class UserInterfaceEngl implements UserInterface {
 
     private Move getUserInput() {
         String move = readUserInput();
-        return convertUserInputToEnum(move);
+        Move convertedMove = convertUserInputToEnum(move);
+
+        if (convertedMove == null) {
+            return humanChoice();
+        } else {
+            return convertedMove;
+        }
     }
 
     private Move convertUserInputToEnum(String move) {
