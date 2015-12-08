@@ -19,11 +19,11 @@ public class Game {
                 userInterface.sayBye();
                 break;
             }
-            getWinner(humanChoice);
+            announceWinner(humanChoice);
         }
     }
 
-    public void getWinner(Move humanChoice) {
+    public void announceWinner(Move humanChoice) {
         Move computerChoice = computerPlayer.generateMove();
         Rules rules = new Rules(humanChoice, computerChoice);
         userInterface.communicateWinner(computerChoice, rules);

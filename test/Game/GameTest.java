@@ -24,7 +24,7 @@ public class GameTest {
     @Test
     public void playsOneRound() {
         fakeRandomizer.setFakeRandomMove(Move.ROCK);
-        game.getWinner(Move.PAPER);
+        game.announceWinner(Move.PAPER);
         assertEquals("Computer choice was: ROCK\n\nWinner: human", fakeConsole.messagePrinted());
     }
 
