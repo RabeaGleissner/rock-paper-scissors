@@ -47,13 +47,6 @@ public class Game {
         return returnedMove;
     }
 
-    private boolean isValid(Move humanChoice) {
-        return humanChoice == Move.ROCK ||
-               humanChoice == Move.SCISSORS ||
-               humanChoice == Move.PAPER ||
-               humanChoice == Move.EXIT;
-    }
-
     private void communicateWinner(Move computerChoice, Rules rules) {
         print(userInterface.showComputerChoice(computerChoice.toString()));
         print(userInterface.announceGameEnd(rules.findWinner()));
@@ -75,5 +68,4 @@ public class Game {
     private boolean userQuits(Move humanChoice) {
         return humanChoice.equals(Move.EXIT);
     }
-
 }
