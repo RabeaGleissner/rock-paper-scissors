@@ -1,5 +1,6 @@
 package game;
-import UI.UserInterfaceEngl;
+import UI.English;
+import UI.UserInterface;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,13 +11,15 @@ public class GameTest {
     private FakeConsole fakeConsole;
     private Game game;
     private FakeRandomizer fakeRandomizer;
+    private English english;
 
 
     @Before
     public void setup() {
         fakeConsole = new FakeConsole();
         fakeRandomizer = new FakeRandomizer();
-        UserInterfaceEngl userInterface = new UserInterfaceEngl(fakeConsole);
+        english = new English();
+        UserInterface userInterface = new UserInterface(fakeConsole, english);
         ComputerPlayer computerPlayer = new ComputerPlayer(fakeRandomizer);
         game = new Game(userInterface, computerPlayer);
     }
