@@ -7,14 +7,16 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class UserInterfaceEnglTest {
-    private UserInterfaceEngl userInterface;
+public class UserInterfaceTest {
+    private UserInterface userInterface;
     private FakeConsole fakeConsole;
+    private English english;
 
     @Before
     public void setup() {
         fakeConsole = new FakeConsole();
-        userInterface = new UserInterfaceEngl(fakeConsole);
+        english = new English();
+        userInterface = new UserInterface(fakeConsole, english);
     }
 
     @Test

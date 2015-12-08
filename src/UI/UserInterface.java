@@ -2,21 +2,16 @@ package UI;
 import game.Console;
 import game.Move;
 import game.Rules;
-import game.UserInterface;
 
-public class UserInterfaceEngl implements UserInterface {
+public class UserInterface implements game.UserInterface {
 
     private final Console console;
+    private final Language language;
 
-    public UserInterfaceEngl(Console console) {
+    public UserInterface(Console console, Language language) {
         this.console = console;
+        this.language = language;
     }
-
-    String PROMPT = "\nPlease enter your choice: (R = rock, S = scissors, P = paper) or type E for exit";
-    String DRAW = "\n\nIt's a draw!";
-    String WINNER = "\n\nWinner: ";
-    String COMPUTER_CHOICE = "Computer choice was: ";
-    String GOODBYE = "See you next time!";
 
 
     public void sayBye() {
@@ -63,18 +58,18 @@ public class UserInterfaceEngl implements UserInterface {
     }
 
     private String askForHumanChoice() {
-        return PROMPT;
+        return language.userPrompt();
     }
 
     private String showComputerChoice(String choice) {
-        return COMPUTER_CHOICE + choice;
+        return language.computerChoice()+ choice;
     }
 
     private String announceGameEnd(String winner) {
         if (winner.equals("draw")) {
-            return DRAW;
+            return language.draw();
         } else {
-            return WINNER + winner;
+            return language.winner() + winner;
         }
     }
 
@@ -83,7 +78,7 @@ public class UserInterfaceEngl implements UserInterface {
     }
 
     private String goodbye() {
-        return GOODBYE;
+        return language.goodbye();
     }
 }
 
