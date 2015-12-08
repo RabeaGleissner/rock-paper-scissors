@@ -1,40 +1,62 @@
 package game;
-import UI.English;
-import UI.UserInterface;
 import org.junit.Before;
 import org.junit.Test;
 
+import static game.Move.EXIT;
+import static game.Move.ROCK;
+import static game.Move.SCISSORS;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GameTest {
 
-    private FakeConsole fakeConsole;
     private Game game;
-    private FakeRandomizer fakeRandomizer;
-    private English english;
+    private FakeUserInterface user;
+    private FakeComputerPlayer computer;
 
 
     @Before
     public void setup() {
-        fakeConsole = new FakeConsole();
-        fakeRandomizer = new FakeRandomizer();
-        english = new English();
-        UserInterface userInterface = new UserInterface(fakeConsole, english);
-        ComputerPlayer computerPlayer = new ComputerPlayer(fakeRandomizer);
-        game = new Game(userInterface, computerPlayer);
+        user = new FakeUserInterface();
+        computer = new FakeComputerPlayer();
+        game = new Game(user, computer);
     }
 
     @Test
     public void playsOneRound() {
-        fakeRandomizer.setFakeRandomMove(Move.ROCK);
         game.announceWinner(Move.PAPER);
-        assertEquals("Computer choice was: ROCK\n\nWinner: human", fakeConsole.messagePrinted());
+        assertEquals(true , user.communicateWinnerWasCalled);
     }
 
     @Test
-    public void nothingIsPrintedIfUserExits() {
-        fakeConsole.provideUserChoice("E");
+    public void announcesHumanAsWinner() {
+        user.plays(ROCK, EXIT);
+        computer.plays(SCISSORS);
         game.play();
-        assertEquals("See you next time!", fakeConsole.messagePrinted());
+        assertTrue(user.sayByeWasCalled);
+    }
+
+    @Test
+    public void exitWhenUserEntersE() {
+        user.userWantsToExit();
+        game.play();
+        assertEquals(true, user.sayByeWasCalled);
+    }
+
+    public static class FakeComputerPlayer extends ComputerPlayer {
+        private Move scissors;
+
+        public FakeComputerPlayer() {
+            super(null);
+        }
+
+        @Override
+        public Move generateMove() {
+            return scissors;
+        }
+
+        public void plays(Move scissors) {
+            this.scissors = scissors;
+        }
     }
 }

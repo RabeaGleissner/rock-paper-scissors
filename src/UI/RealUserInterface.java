@@ -3,12 +3,12 @@ import game.Console;
 import game.Move;
 import game.Rules;
 
-public class UserInterface implements game.UserInterface {
+public class RealUserInterface implements game.UserInterface {
 
     private final Console console;
     private final Language language;
 
-    public UserInterface(Console console, Language language) {
+    public RealUserInterface(Console console, Language language) {
         this.console = console;
         this.language = language;
     }
