@@ -1,3 +1,5 @@
+package game;
+
 public class Game {
 
     private final Console console;
@@ -43,6 +45,13 @@ public class Game {
                 break;
         }
         return returnedMove;
+    }
+
+    private boolean isValid(Move humanChoice) {
+        return humanChoice == Move.ROCK ||
+               humanChoice == Move.SCISSORS ||
+               humanChoice == Move.PAPER ||
+               humanChoice == Move.EXIT;
     }
 
     private void communicateWinner(Move computerChoice, Rules rules) {

@@ -1,3 +1,5 @@
+package game;
+import UI.UserInterfaceEngl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +16,7 @@ public class GameTest {
     public void setup() {
         fakeConsole = new FakeConsole();
         fakeRandomizer = new FakeRandomizer();
-        UserInterface userInterface = new UserInterface();
+        UserInterfaceEngl userInterface = new UserInterfaceEngl();
         ComputerPlayer computerPlayer = new ComputerPlayer(fakeRandomizer);
         game = new Game(fakeConsole, userInterface, computerPlayer);
     }

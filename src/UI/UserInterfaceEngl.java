@@ -1,6 +1,10 @@
+package UI;
+
+import game.UserInterface;
+
 import java.util.Objects;
 
-public class UserInterface {
+public class UserInterfaceEngl implements UserInterface {
 
     String PROMPT = "\nPlease enter your choice: (R = rock, S = scissors, P = paper) or type E for exit";
     String DRAW = "It's a draw!";

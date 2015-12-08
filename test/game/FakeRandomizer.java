@@ -1,3 +1,5 @@
+package game;
+
 public class FakeRandomizer implements Randomizer {
 
     private Move randomMove;

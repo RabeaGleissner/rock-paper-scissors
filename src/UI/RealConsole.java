@@ -1,3 +1,7 @@
+package UI;
+
+import game.Console;
+
 import java.util.Scanner;
 
 public class RealConsole implements Console {

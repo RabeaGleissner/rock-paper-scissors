@@ -1,15 +1,16 @@
-import junit.framework.Assert;
+package UI;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class UserInterfaceTest {
-    private UserInterface userInterface;
+public class UserInterfaceEnglTest {
+    private UserInterfaceEngl userInterface;
 
     @Before
     public void setup() {
-        userInterface = new UserInterface();
+        userInterface = new UserInterfaceEngl();
     }
 
     @Test

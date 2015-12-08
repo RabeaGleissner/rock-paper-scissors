@@ -1,3 +1,5 @@
+package game;
+
 public class FakeConsole implements Console {
 
     private String userChoice;

@@ -1,3 +1,5 @@
+package game;
+
 public class ComputerPlayer {
 
     private final Randomizer randomizer;
