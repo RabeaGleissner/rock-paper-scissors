@@ -1,45 +1,54 @@
 package game;
-
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class RulesTest {
 
-
     @Test
     public void computerChoicePaperWins() {
-        Rules rules = new Rules(Move.ROCK, Move.PAPER);
+        Move humanMove = Move.ROCK;
+        Move computerMove = Move.PAPER;
+        Rules rules = new Rules(humanMove, computerMove);
         assertEquals("computer", rules.findWinner());
     }
 
     @Test
     public void humanChoicePaperWins() {
-        Rules rules = new Rules(Move.PAPER, Move.ROCK);
+        Move computerMove = Move.ROCK;
+        Move humanMove = Move.PAPER;
+        Rules rules = new Rules(humanMove, computerMove);
         assertEquals("human", rules.findWinner());
     }
 
     @Test
     public void computerChoiceRockWins() {
-        Rules rules = new Rules(Move.SCISSORS, Move.ROCK);
+        Move computerMove = Move.ROCK;
+        Move humanMove = Move.SCISSORS;
+        Rules rules = new Rules(humanMove, computerMove);
         assertEquals("computer", rules.findWinner());
     }
 
     @Test
     public void humanChoiceRockWins() {
-        Rules rules = new Rules(Move.ROCK, Move.SCISSORS);
+        Move humanMove = Move.ROCK;
+        Move computerMove = Move.SCISSORS;
+        Rules rules = new Rules(humanMove, computerMove);
         assertEquals("human", rules.findWinner());
     }
 
     @Test
     public void computerChoiceScissorsWins() {
-        Rules rules = new Rules(Move.PAPER, Move.SCISSORS);
+        Move humanMove = Move.PAPER;
+        Move computerMove = Move.SCISSORS;
+        Rules rules = new Rules(humanMove, computerMove);
         assertEquals("computer", rules.findWinner());
     }
 
     @Test
     public void humanChoiceScissorsWins() {
-        Rules rules = new Rules(Move.SCISSORS, Move.PAPER);
+        Move humanMove = Move.SCISSORS;
+        Move computerMove = Move.PAPER;
+        Rules rules = new Rules(humanMove, computerMove);
         assertEquals("human", rules.findWinner());
     }
 
