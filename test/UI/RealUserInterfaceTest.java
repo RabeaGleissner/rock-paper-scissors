@@ -14,63 +14,63 @@ public class RealUserInterfaceTest {
     @Before
     public void setup() {
         fakeConsole = new FakeConsole();
-        EnglishLanguage englishLanguage = new EnglishLanguage();
-        realUserInterface = new RealUserInterface(fakeConsole, englishLanguage);
+        FakeLanguage fakeLanguage = new FakeLanguage();
+        realUserInterface = new RealUserInterface(fakeConsole, fakeLanguage);
     }
 
     @Test
     public void showComputerChoice() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
-        assertEquals("Computer choice was: ROCK\n\nWinner: human", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:ROCK\n\nWinnerhuman", fakeConsole.messagePrinted());
     }
 
     @Test
     public void sayGoodByeToUser() {
         realUserInterface.sayBye();
-        assertEquals("See you next time!", fakeConsole.messagePrinted());
+        assertEquals("Bye", fakeConsole.messagePrinted());
     }
 
     @Test
     public void getUserInputRock() {
-        fakeConsole.provideUserChoice("R");
+        fakeConsole.provideUserChoice("1");
         assertEquals(Move.ROCK, realUserInterface.humanChoice());
     }
 
     @Test
     public void getUserInputScissors() {
-        fakeConsole.provideUserChoice("S");
+        fakeConsole.provideUserChoice("2");
         assertEquals(Move.SCISSORS, realUserInterface.humanChoice());
     }
 
     @Test
     public void getUserInputPaper() {
-        fakeConsole.provideUserChoice("P");
+        fakeConsole.provideUserChoice("3");
         assertEquals(Move.PAPER, realUserInterface.humanChoice());
     }
 
     @Test
     public void getUserInputExit() {
-        fakeConsole.provideUserChoice("E");
+        fakeConsole.provideUserChoice("4");
         assertEquals(Move.EXIT, realUserInterface.humanChoice());
     }
 
     @Test
     public void returnUserSelection() {
-        fakeConsole.provideUserChoice("R");
+        fakeConsole.provideUserChoice("1");
         assertEquals(Move.ROCK, realUserInterface.humanChoice());
     }
 
     @Test
     public void communicateDraw() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.ROCK, Move.ROCK));
-        assertEquals("Computer choice was: ROCK\n\nIt's a draw!", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:ROCK\n\nDraw", fakeConsole.messagePrinted());
 
     }
 
     @Test
     public void communicateWinnerHuman() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
-        assertEquals("Computer choice was: ROCK\n\nWinner: human", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:ROCK\n\nWinnerhuman", fakeConsole.messagePrinted());
 
     }
 }

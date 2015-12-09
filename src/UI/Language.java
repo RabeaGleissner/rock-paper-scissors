@@ -6,4 +6,5 @@ public interface Language {
     String winner();
     String computerChoice();
     String goodbye();
+    String languagePreference();
 }
