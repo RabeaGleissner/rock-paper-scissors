@@ -1,5 +1,7 @@
 package UI;
 
+import game.Winner;
+
 public class FakeLanguage implements Language{
     final String PROMPT = "Prompt";
     final String DRAW = "Draw";
@@ -20,7 +22,7 @@ public class FakeLanguage implements Language{
     }
 
     @Override
-    public String winner() {
+    public String winner(Winner winner) {
         return NEW_LINE + WINNER;
     }
 

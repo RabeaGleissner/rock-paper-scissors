@@ -1,5 +1,7 @@
 package UI;
 
+import game.Winner;
+
 public class GermanLanguage implements Language {
 
     final String PROMPT = "\nBitte gib eine der folgenden Zahlen ein: 1 = Stein, 2 = Schere, 3 = Papier, 4 = Abbrechen";
@@ -8,18 +10,24 @@ public class GermanLanguage implements Language {
     final String COMPUTER_CHOICE = "Der Computer hat folgendes gespielt: ";
     final String GOODBYE = "Bis zum nächsten Mal!";
     final String LANGUAGE_PREFERENCE = "Which language would you like to use? Type E for English and D for Deutsch.";
-
+    final String COMPUTER = "Computer";
+    final String HUMAN = "User";
+    final String NEW_LINE = "\n\n";
 
     public String userPrompt() {
-        return PROMPT;
+        return NEW_LINE + PROMPT;
     }
 
     public String draw() {
-        return DRAW;
+        return NEW_LINE + DRAW;
     }
 
-    public String winner() {
-        return WINNER;
+    public String winner(Winner winner) {
+        if (winner == Winner.HUMAN) {
+            return NEW_LINE + WINNER + HUMAN;
+        } else {
+            return NEW_LINE + WINNER + COMPUTER;
+        }
     }
 
     public String computerChoice() {

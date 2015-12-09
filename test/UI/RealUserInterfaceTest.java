@@ -21,7 +21,7 @@ public class RealUserInterfaceTest {
     @Test
     public void showComputerChoice() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
-        assertEquals("Computer choice:ROCK\n\nWinnerhuman", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:ROCK\n\nWinner", fakeConsole.messagePrinted());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class RealUserInterfaceTest {
     @Test
     public void communicateWinnerHuman() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
-        assertEquals("Computer choice:ROCK\n\nWinnerhuman", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:ROCK\n\nWinner", fakeConsole.messagePrinted());
 
     }
 }

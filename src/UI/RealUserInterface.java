@@ -70,7 +70,7 @@ public class RealUserInterface implements game.UserInterface {
         if (winner == Winner.DRAW) {
             return language.draw();
         } else {
-            return language.winner() + winner.toString();
+            return language.winner(winner);
         }
     }
 
