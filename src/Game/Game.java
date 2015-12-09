@@ -12,6 +12,7 @@ public class Game {
     }
 
     public void play() {
+        userInterface.chooseLanguage();
         while (true) {
             Move humanChoice = userInterface.humanChoice();
 

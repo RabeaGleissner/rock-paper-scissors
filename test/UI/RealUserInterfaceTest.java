@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RealUserInterfaceTest {
     private RealUserInterface realUserInterface;
@@ -72,5 +73,19 @@ public class RealUserInterfaceTest {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
         assertEquals("Computer choice:ROCK\n\nWinner", fakeConsole.messagePrinted());
 
+    }
+
+    @Test
+    public void asksUserForLanguagePreference() {
+        realUserInterface.chooseLanguage();
+        assertEquals("Language", fakeConsole.messagePrinted());
+    }
+
+    @Test
+    public void switchesLanguageWhenReqeusted() {
+        fakeConsole.provideUserChoice("2");
+        realUserInterface.chooseLanguage();
+        realUserInterface.sayBye();
+        assertThat(fakeConsole.messagePrinted()).isEqualTo("Bis zum nächsten Mal!");
     }
 }

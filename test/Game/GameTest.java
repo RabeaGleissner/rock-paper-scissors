@@ -43,6 +43,13 @@ public class GameTest {
         assertEquals(true, user.sayByeWasCalled);
     }
 
+    @Test
+    public void askUserForLanguagePreference() {
+        user.userWantsToExit();
+        game.play();
+        assertTrue(user.chooseLanguageWasCalled);
+    }
+
     public static class FakeComputerPlayer extends ComputerPlayer {
         private Move scissors;
 

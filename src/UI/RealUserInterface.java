@@ -7,7 +7,7 @@ import game.Winner;
 public class RealUserInterface implements game.UserInterface {
 
     private final Console console;
-    private final Language language;
+    private Language language;
 
     public RealUserInterface(Console console, Language language) {
         this.console = console;
@@ -81,6 +81,14 @@ public class RealUserInterface implements game.UserInterface {
     private String goodbye() {
         return language.goodbye();
     }
+
+    @Override
+    public void chooseLanguage() {
+        print(language.languagePreference());
+        LanguageFactory languageFactory = new LanguageFactory();
+        this.language = languageFactory.generateLanguage(readUserInput());
+    }
+
 }
 
 

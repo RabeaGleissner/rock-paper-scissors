@@ -9,6 +9,7 @@ public class FakeUserInterface implements UserInterface {
     public boolean communicateWinnerWasCalled = false;
     public boolean sayByeWasCalled = false;
     private List<Move> moves = new LinkedList<>();
+    public boolean chooseLanguageWasCalled = false;
 
     public Move humanChoice() {
       return moves.remove(0);
@@ -20,6 +21,11 @@ public class FakeUserInterface implements UserInterface {
 
     public void sayBye() {
         sayByeWasCalled = true;
+    }
+
+    @Override
+    public void chooseLanguage() {
+        chooseLanguageWasCalled = true;
     }
 
     public void plays(Move ... move) {

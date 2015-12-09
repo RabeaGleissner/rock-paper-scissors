@@ -1,8 +1,8 @@
 import UI.EnglishLanguage;
-import game.ComputerPlayer;
-import game.Game;
 import UI.RealConsole;
 import UI.RealUserInterface;
+import game.ComputerPlayer;
+import game.Game;
 import game.RealRandomizer;
 
 public class Main {
