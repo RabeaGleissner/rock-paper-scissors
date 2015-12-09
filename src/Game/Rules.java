@@ -12,17 +12,17 @@ public class Rules {
         this.computerChoice = computerChoice;
     }
 
-    public String findWinner() {
+    public Winner findWinner() {
         Move winningMove = winningMove();
 
         if (winningMove == humanChoice) {
-            return "human";
+            return Winner.HUMAN;
         } else if (winningMove == computerChoice) {
-            return "computer";
+            return Winner.COMPUTER;
         } else if (draw()) {
-            return "draw";
+            return Winner.DRAW;
         } else {
-            return "something went wrong";
+            return null;
         }
     }
 

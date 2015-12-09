@@ -2,6 +2,7 @@ package UI;
 import game.Console;
 import game.Move;
 import game.Rules;
+import game.Winner;
 
 public class RealUserInterface implements game.UserInterface {
 
@@ -65,11 +66,11 @@ public class RealUserInterface implements game.UserInterface {
         return language.computerChoice()+ choice;
     }
 
-    private String announceGameEnd(String winner) {
-        if (winner.equals("draw")) {
+    private String announceGameEnd(Winner winner) {
+        if (winner == Winner.DRAW) {
             return language.draw();
         } else {
-            return language.winner() + winner;
+            return language.winner() + winner.toString();
         }
     }
 
