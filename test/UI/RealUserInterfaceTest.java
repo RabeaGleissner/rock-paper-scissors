@@ -10,13 +10,12 @@ import static junit.framework.TestCase.assertEquals;
 public class RealUserInterfaceTest {
     private RealUserInterface realUserInterface;
     private FakeConsole fakeConsole;
-    private English english;
 
     @Before
     public void setup() {
         fakeConsole = new FakeConsole();
-        english = new English();
-        realUserInterface = new RealUserInterface(fakeConsole, english);
+        EnglishLanguage englishLanguage = new EnglishLanguage();
+        realUserInterface = new RealUserInterface(fakeConsole, englishLanguage);
     }
 
     @Test
