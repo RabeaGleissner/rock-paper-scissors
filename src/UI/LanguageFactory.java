@@ -8,7 +8,12 @@ public class LanguageFactory {
         } else if (userChoice.equals("2")){
             return new GermanLanguage();
         } else {
-            throw new RuntimeException();
+            throw new RuntimeException("Couldn't find language for: " + userChoice);
         }
+    }
+
+
+    public Language defaultLanguage() {
+        return new EnglishLanguage();
     }
 }

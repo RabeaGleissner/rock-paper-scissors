@@ -22,4 +22,9 @@ public class LanguageFactoryTest {
     public void failsWhenUnkonw() {
         languageFactory.generateLanguage("1234");
     }
+
+    @Test
+    public void returnsDefaultLanguage() {
+        assertThat(languageFactory.defaultLanguage()).isInstanceOf(EnglishLanguage.class);
+    }
 }
