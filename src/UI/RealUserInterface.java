@@ -22,7 +22,7 @@ public class RealUserInterface implements game.UserInterface {
     }
 
     public void communicateWinner(Move computerChoice, Rules rules) {
-        print(showComputerChoice(computerChoice.toString()) + announceGameEnd(rules.findWinner()));
+        print(showComputerChoice(language.communicateComputerChoice(computerChoice)) + announceGameEnd(rules.findWinner()));
     }
 
     public Move humanChoice() {

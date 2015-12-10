@@ -1,5 +1,6 @@
 package UI;
 
+import game.Move;
 import game.Winner;
 
 public interface Language {
@@ -9,4 +10,5 @@ public interface Language {
     String computerChoice();
     String goodbye();
     String languagePreference();
+    String communicateComputerChoice(Move computerChoice);
 }

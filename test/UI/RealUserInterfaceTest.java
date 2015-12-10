@@ -32,7 +32,7 @@ public class RealUserInterfaceTest {
     @Test
     public void showComputerChoice() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
-        assertEquals("Computer choice:ROCK\n\nWinner", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:rock\n\nWinner", fakeConsole.messagePrinted());
     }
 
     @Test
@@ -74,14 +74,14 @@ public class RealUserInterfaceTest {
     @Test
     public void communicateDraw() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.ROCK, Move.ROCK));
-        assertEquals("Computer choice:ROCK\n\nDraw", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:rock\n\nDraw", fakeConsole.messagePrinted());
 
     }
 
     @Test
     public void communicateWinnerHuman() {
         realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
-        assertEquals("Computer choice:ROCK\n\nWinner", fakeConsole.messagePrinted());
+        assertEquals("Computer choice:rock\n\nWinner", fakeConsole.messagePrinted());
 
     }
 

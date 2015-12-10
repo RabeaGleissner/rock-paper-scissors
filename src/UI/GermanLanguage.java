@@ -1,9 +1,12 @@
 package UI;
 
+import game.Move;
 import game.Winner;
 
 public class GermanLanguage implements Language {
-
+    final String SCISSORS = "Schere";
+    final String PAPER = "Papier";
+    final String ROCK = "Stein";
     final String PROMPT = "\nBitte gib eine der folgenden Zahlen ein: 1 = Stein, 2 = Schere, 3 = Papier, 4 = Abbrechen";
     final String DRAW = "\n\nUnentschieden!";
     final String WINNER = "\n\nGewinner: ";
@@ -40,5 +43,18 @@ public class GermanLanguage implements Language {
 
     public String languagePreference() {
         return LANGUAGE_PREFERENCE;
+    }
+
+    @Override
+    public String communicateComputerChoice(Move computerChoice) {
+        String move;
+        if (computerChoice == Move.ROCK) {
+            move = ROCK;
+        } else if (computerChoice == Move.PAPER) {
+            move = PAPER;
+        } else {
+            move = SCISSORS;
+        }
+        return move;
     }
 }

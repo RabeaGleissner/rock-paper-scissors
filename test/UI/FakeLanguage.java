@@ -1,8 +1,12 @@
 package UI;
 
+import game.Move;
 import game.Winner;
 
 public class FakeLanguage implements Language{
+    final String SCISSORS = "scissors";
+    final String PAPER = "paper";
+    final String ROCK = "rock";
     final String PROMPT = "Prompt";
     final String DRAW = "Draw";
     final String WINNER = "Winner";
@@ -39,5 +43,18 @@ public class FakeLanguage implements Language{
     @Override
     public String languagePreference() {
         return LANGUAGE_PREFERENCE;
+    }
+
+    @Override
+    public String communicateComputerChoice(Move computerChoice) {
+        String move;
+        if (computerChoice == Move.ROCK) {
+            move = ROCK;
+        } else if (computerChoice == Move.PAPER) {
+            move = PAPER;
+        } else {
+            move = SCISSORS;
+        }
+        return move;
     }
 }
