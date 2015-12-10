@@ -8,10 +8,12 @@ public class RealUserInterface implements game.UserInterface {
 
     private final Console console;
     private Language language;
+    private LanguageFactory languageFactory;
 
-    public RealUserInterface(Console console, Language language) {
+    public RealUserInterface(Console console, LanguageFactory languageFactory) {
         this.console = console;
-        this.language = language;
+        this.languageFactory = languageFactory;
+        this.language = languageFactory.defaultLanguage();
     }
 
 
@@ -85,7 +87,6 @@ public class RealUserInterface implements game.UserInterface {
     @Override
     public void chooseLanguage() {
         print(language.languagePreference());
-        LanguageFactory languageFactory = new LanguageFactory();
         this.language = languageFactory.generateLanguage(readUserInput());
     }
 

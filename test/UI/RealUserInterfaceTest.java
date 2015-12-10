@@ -16,7 +16,17 @@ public class RealUserInterfaceTest {
     public void setup() {
         fakeConsole = new FakeConsole();
         FakeLanguage fakeLanguage = new FakeLanguage();
-        realUserInterface = new RealUserInterface(fakeConsole, fakeLanguage);
+        realUserInterface = new RealUserInterface(fakeConsole, new LanguageFactory() {
+            @Override
+            public Language generateLanguage(String userChoice) {
+                return fakeLanguage;
+            }
+
+            @Override
+            public Language defaultLanguage() {
+                return fakeLanguage;
+            }
+        });
     }
 
     @Test
@@ -77,12 +87,21 @@ public class RealUserInterfaceTest {
 
     @Test
     public void asksUserForLanguagePreference() {
+        fakeConsole.provideUserChoice("2");
         realUserInterface.chooseLanguage();
         assertEquals("Language", fakeConsole.messagePrinted());
     }
 
+
+    // TODO: find a better way to detect that langauges were switched
     @Test
     public void switchesLanguageWhenReqeusted() {
+        RealUserInterface realUserInterface = new RealUserInterface(fakeConsole, new LanguageFactory() {
+            @Override
+            public Language generateLanguage(String userChoice) {
+                return userChoice.equals("2") ? new GermanLanguage() : new EnglishLanguage();
+            }
+        });
         fakeConsole.provideUserChoice("2");
         realUserInterface.chooseLanguage();
         realUserInterface.sayBye();
