@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class RealUserInterfaceTest {
     private RealUserInterface realUserInterface;
@@ -92,19 +92,28 @@ public class RealUserInterfaceTest {
         assertEquals("Language", fakeConsole.messagePrinted());
     }
 
-
-    // TODO: find a better way to detect that langauges were switched
     @Test
-    public void switchesLanguageWhenReqeusted() {
-        RealUserInterface realUserInterface = new RealUserInterface(fakeConsole, new LanguageFactory() {
+    public void givenALanguageChoiceCallsTheLanguageFactoryWithTheSameChoice() {
+        class LanguageFactorySpy extends LanguageFactory {
+            private boolean generateLanguageCall = false;
+
             @Override
             public Language generateLanguage(String userChoice) {
-                return userChoice.equals("2") ? new GermanLanguage() : new EnglishLanguage();
+                generateLanguageCall = true;
+                return null;
             }
-        });
+
+            public boolean hasGenerateLanguageBeenCalled() {
+                return generateLanguageCall;
+            }
+        }
+
+        LanguageFactorySpy languageFactorySpy = new LanguageFactorySpy();
+        RealUserInterface realUserInterface = new RealUserInterface(fakeConsole, languageFactorySpy);
+
         fakeConsole.provideUserChoice("2");
         realUserInterface.chooseLanguage();
-        realUserInterface.sayBye();
-        assertThat(fakeConsole.messagePrinted()).isEqualTo("Bis zum nächsten Mal!");
+
+        assertTrue(languageFactorySpy.hasGenerateLanguageBeenCalled());
     }
 }
