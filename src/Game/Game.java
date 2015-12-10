@@ -24,7 +24,7 @@ public class Game {
         }
     }
 
-    public void announceWinner(Move humanChoice) {
+    private void announceWinner(Move humanChoice) {
         Move computerChoice = computerPlayer.generateMove();
         Rules rules = new Rules(humanChoice, computerChoice);
         userInterface.communicateWinner(computerChoice, rules);

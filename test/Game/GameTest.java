@@ -23,12 +23,6 @@ public class GameTest {
     }
 
     @Test
-    public void playsOneRound() {
-        game.announceWinner(Move.PAPER);
-        assertEquals(true , user.communicateWinnerWasCalled);
-    }
-
-    @Test
     public void announcesHumanAsWinner() {
         user.plays(ROCK, EXIT);
         computer.plays(SCISSORS);
