@@ -1,7 +1,7 @@
 package UI;
 
+import game.GameEnd;
 import game.Move;
-import game.Winner;
 
 public class EnglishLanguage implements Language {
     final String SCISSORS = "scissors";
@@ -25,8 +25,8 @@ public class EnglishLanguage implements Language {
        return NEW_LINE + DRAW;
     }
 
-    public String winner(Winner winner) {
-        if (winner == Winner.HUMAN) {
+    public String winner(GameEnd gameEnd) {
+        if (gameEnd == GameEnd.HUMAN_WIN) {
             return NEW_LINE + WINNER + HUMAN;
         } else {
             return NEW_LINE + WINNER + COMPUTER;

@@ -12,15 +12,15 @@ public class Rules {
         this.computerChoice = computerChoice;
     }
 
-    public Winner gameEndState() {
+    public GameEnd gameEndState() {
         Move winningMove = winningMove();
 
         if (winningMove == humanChoice) {
-            return Winner.HUMAN;
+            return GameEnd.HUMAN_WIN;
         } else if (winningMove == computerChoice) {
-            return Winner.COMPUTER;
+            return GameEnd.COMPUTER_WIN;
         } else if (draw()) {
-            return Winner.DRAW;
+            return GameEnd.DRAW;
         } else {
             return null;
         }

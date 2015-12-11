@@ -1,7 +1,7 @@
 package UI;
 
+import game.GameEnd;
 import game.Move;
-import game.Winner;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ public class EnglishLanguageTest {
 
     @Test
     public void winner() {
-        assertEquals("\n\nWinner: Computer", english.winner(Winner.COMPUTER));
+        assertEquals("\n\nWinner: Computer", english.winner(GameEnd.COMPUTER_WIN));
 
     }
 

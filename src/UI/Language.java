@@ -1,12 +1,12 @@
 package UI;
 
 import game.Move;
-import game.Winner;
+import game.GameEnd;
 
 public interface Language {
     String userPrompt();
     String draw();
-    String winner(Winner winner);
+    String winner(GameEnd gameEnd);
     String computerChoice();
     String goodbye();
     String languagePreference();

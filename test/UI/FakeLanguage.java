@@ -1,7 +1,7 @@
 package UI;
 
+import game.GameEnd;
 import game.Move;
-import game.Winner;
 
 public class FakeLanguage implements Language{
     final String SCISSORS = "scissors";
@@ -26,7 +26,7 @@ public class FakeLanguage implements Language{
     }
 
     @Override
-    public String winner(Winner winner) {
+    public String winner(GameEnd gameEnd) {
         return NEW_LINE + WINNER;
     }
 
