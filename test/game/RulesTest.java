@@ -9,7 +9,7 @@ public class RulesTest {
         Move humanMove = Move.ROCK;
         Move computerMove = Move.PAPER;
         Rules rules = new Rules(humanMove, computerMove);
-        assertEquals(Winner.COMPUTER, rules.findWinner());
+        assertEquals(Winner.COMPUTER, rules.gameEndState());
     }
 
     @Test
@@ -17,7 +17,7 @@ public class RulesTest {
         Move computerMove = Move.ROCK;
         Move humanMove = Move.PAPER;
         Rules rules = new Rules(humanMove, computerMove);
-        assertEquals(Winner.HUMAN, rules.findWinner());
+        assertEquals(Winner.HUMAN, rules.gameEndState());
     }
 
     @Test
@@ -25,7 +25,7 @@ public class RulesTest {
         Move computerMove = Move.ROCK;
         Move humanMove = Move.SCISSORS;
         Rules rules = new Rules(humanMove, computerMove);
-        assertEquals(Winner.COMPUTER, rules.findWinner());
+        assertEquals(Winner.COMPUTER, rules.gameEndState());
     }
 
     @Test
@@ -33,7 +33,7 @@ public class RulesTest {
         Move humanMove = Move.ROCK;
         Move computerMove = Move.SCISSORS;
         Rules rules = new Rules(humanMove, computerMove);
-        assertEquals(Winner.HUMAN, rules.findWinner());
+        assertEquals(Winner.HUMAN, rules.gameEndState());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class RulesTest {
         Move humanMove = Move.PAPER;
         Move computerMove = Move.SCISSORS;
         Rules rules = new Rules(humanMove, computerMove);
-        assertEquals(Winner.COMPUTER, rules.findWinner());
+        assertEquals(Winner.COMPUTER, rules.gameEndState());
     }
 
     @Test
@@ -49,18 +49,18 @@ public class RulesTest {
         Move humanMove = Move.SCISSORS;
         Move computerMove = Move.PAPER;
         Rules rules = new Rules(humanMove, computerMove);
-        assertEquals(Winner.HUMAN, rules.findWinner());
+        assertEquals(Winner.HUMAN, rules.gameEndState());
     }
 
     @Test
     public void drawWithPaper() {
         Rules rules = new Rules(Move.PAPER, Move.PAPER);
-        assertEquals(Winner.DRAW, rules.findWinner());
+        assertEquals(Winner.DRAW, rules.gameEndState());
     }
 
     @Test
     public void errorMessage() {
         Rules rules = new Rules(Move.EXIT, Move.PAPER);
-        assertEquals(null, rules.findWinner());
+        assertEquals(null, rules.gameEndState());
     }
 }

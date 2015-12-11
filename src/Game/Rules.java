@@ -12,7 +12,7 @@ public class Rules {
         this.computerChoice = computerChoice;
     }
 
-    public Winner findWinner() {
+    public Winner gameEndState() {
         Move winningMove = winningMove();
 
         if (winningMove == humanChoice) {
