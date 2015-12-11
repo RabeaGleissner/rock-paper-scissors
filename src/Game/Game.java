@@ -20,14 +20,16 @@ public class Game {
                 userInterface.sayBye();
                 break;
             }
-            announceWinner(humanChoice);
+            announceGameEnd(humanChoice);
         }
     }
 
-    private void announceWinner(Move humanChoice) {
-        Move computerChoice = computerPlayer.generateMove();
-        Rules rules = new Rules(humanChoice, computerChoice);
-        userInterface.communicateWinner(computerChoice, rules);
+    private void announceGameEnd(Move humanChoice) {
+        userInterface.communicateWinner(computerMove(), new Rules(humanChoice, computerMove()));
+    }
+
+    private Move computerMove() {
+        return computerPlayer.generateMove();
     }
 
     private boolean userQuits(Move humanChoice) {
