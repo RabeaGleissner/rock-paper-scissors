@@ -1,6 +1,6 @@
 package game;
 
-import java.util.Objects;
+import static game.Move.*;
 
 public class Rules {
 
@@ -28,32 +28,32 @@ public class Rules {
 
     private Move winningMove() {
         if (paperWins() ) {
-            return Move.PAPER;
+            return PAPER;
         } else if (rockWins()) {
-            return Move.ROCK;
+            return ROCK;
         } else if (scissorsWin()) {
-            return Move.SCISSORS;
+            return SCISSORS;
         } else {
             return null;
         }
     }
 
     private boolean paperWins() {
-        return ((humanChoice == Move.ROCK) && (computerChoice == Move.PAPER)) ||
-                ((humanChoice  == Move.PAPER) && (computerChoice == Move.ROCK));
+        return ((humanChoice == ROCK) && (computerChoice == PAPER)) ||
+                ((humanChoice  == PAPER) && (computerChoice == ROCK));
     }
 
     private boolean rockWins() {
-        return ((humanChoice == Move.ROCK) && (computerChoice == Move.SCISSORS)) ||
-                ((humanChoice == Move.SCISSORS) && (computerChoice == Move.ROCK));
+        return ((humanChoice == ROCK) && (computerChoice == SCISSORS)) ||
+                ((humanChoice == SCISSORS) && (computerChoice == ROCK));
     }
 
     private boolean scissorsWin() {
-        return ((humanChoice == Move.PAPER) && (computerChoice == Move.SCISSORS)) ||
-                ((humanChoice == Move.SCISSORS) && (computerChoice == Move.PAPER));
+        return ((humanChoice == PAPER) && (computerChoice == SCISSORS)) ||
+                ((humanChoice == SCISSORS) && (computerChoice == PAPER));
     }
 
     private boolean draw() {
-        return Objects.equals(humanChoice, computerChoice);
+        return humanChoice == computerChoice;
     }
 }
