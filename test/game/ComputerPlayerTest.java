@@ -7,19 +7,22 @@ import static junit.framework.TestCase.assertEquals;
 
 public class ComputerPlayerTest {
     private ComputerPlayer computerPlayer;
-    private FakeRandomizer fakeRandomizer;
 
     @Before
     public void setup() {
-       fakeRandomizer = new FakeRandomizer();
-       computerPlayer = new ComputerPlayer(fakeRandomizer);
+       computerPlayer = new ComputerPlayer(new FakeRandomCalc());
     }
 
     @Test
     public void generateRandomMove() {
-        fakeRandomizer.setFakeRandomMove(Move.ROCK);
         assertEquals(Move.ROCK, computerPlayer.generateMove());
     }
 
 
+    private class FakeRandomCalc extends RandomCalc {
+        @Override
+        public int randomNumber(int moves) {
+            return 0;
+        }
+    }
 }

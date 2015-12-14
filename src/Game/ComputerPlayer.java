@@ -2,17 +2,16 @@ package game;
 
 public class ComputerPlayer {
 
-    private final Randomizer randomizer;
+    private final RandomCalc randomCalc;
 
-    public ComputerPlayer(Randomizer randomizer) {
-        this.randomizer = randomizer;
+    public ComputerPlayer(RandomCalc randomCalc) {
+        this.randomCalc= randomCalc;
     }
 
     public Move generateMove() {
-
-        return randomizer.getRandomMove();
+        Move[] options = Move.values();
+        int index = randomCalc.randomNumber(options.length - 1);
+        return options[index];
     }
-
-
 }
 
