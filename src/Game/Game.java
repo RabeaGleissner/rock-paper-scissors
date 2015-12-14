@@ -25,7 +25,8 @@ public class Game {
     }
 
     private void announceGameEnd(Move humanChoice) {
-        userInterface.communicateWinner(computerMove(), new Rules(humanChoice, computerMove()));
+        Move computerChoice = computerMove();
+        userInterface.communicateWinner(computerChoice, new Rules(humanChoice, computerChoice));
     }
 
     private Move computerMove() {
