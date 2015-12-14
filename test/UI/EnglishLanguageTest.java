@@ -28,9 +28,8 @@ public class EnglishLanguageTest {
     }
 
     @Test
-    public void winner() {
+    public void announceComputerWinner() {
         assertEquals("\n\nWinner: Computer", english.winner(GameEnd.COMPUTER_WIN));
-
     }
 
     @Test
@@ -52,8 +51,22 @@ public class EnglishLanguageTest {
     }
 
     @Test
-    public void communicateComputerChoice() {
+    public void communicateComputerChoicePaper() {
         assertEquals("paper", english.communicateComputerChoice(Move.PAPER));
+    }
 
+    @Test
+    public void communicateComputerChoiceRock() {
+        assertEquals("rock", english.communicateComputerChoice(Move.ROCK));
+    }
+
+    @Test
+    public void communicateComputerChoiceScissors() {
+        assertEquals("scissors", english.communicateComputerChoice(Move.SCISSORS));
+    }
+
+    @Test
+    public void announceHumanWinner() {
+        assertEquals("\n\nWinner: User", english.winner(GameEnd.HUMAN_WIN));
     }
 }
