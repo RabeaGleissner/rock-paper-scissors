@@ -1,5 +1,6 @@
 package UI;
 import game.FakeConsole;
+import game.GameEnd;
 import game.Move;
 import game.Rules;
 import org.junit.Before;
@@ -31,7 +32,8 @@ public class RealUserInterfaceTest {
 
     @Test
     public void showComputerChoice() {
-        realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
+        // should not communicate computer choice
+        realUserInterface.communicateWinner(Move.ROCK, GameEnd.COMPUTER_WIN);
         assertEquals("Computer choice:rock\n\nWinner", fakeConsole.messagePrinted());
     }
 
@@ -73,14 +75,14 @@ public class RealUserInterfaceTest {
 
     @Test
     public void communicateDraw() {
-        realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.ROCK, Move.ROCK));
+        realUserInterface.communicateWinner(Move.ROCK, GameEnd.DRAW);
         assertEquals("Computer choice:rock\n\nDraw", fakeConsole.messagePrinted());
 
     }
 
     @Test
     public void communicateWinnerHuman() {
-        realUserInterface.communicateWinner(Move.ROCK, new Rules(Move.PAPER, Move.ROCK));
+        realUserInterface.communicateWinner(Move.ROCK, GameEnd.COMPUTER_WIN);
         assertEquals("Computer choice:rock\n\nWinner", fakeConsole.messagePrinted());
 
     }

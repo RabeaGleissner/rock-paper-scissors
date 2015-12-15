@@ -15,7 +15,7 @@ public class FakeUserInterface implements UserInterface {
       return moves.remove(0);
     }
 
-    public void communicateWinner(Move computerChoice, Rules rules) {
+    public void communicateWinner(Move computerChoice, GameEnd gameEnd) {
         communicateWinnerWasCalled = true;
     }
 

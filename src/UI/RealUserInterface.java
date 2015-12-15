@@ -1,10 +1,10 @@
 package UI;
 import game.Console;
-import game.Move;
-import game.Rules;
 import game.GameEnd;
+import game.Move;
+import game.UserInterface;
 
-public class RealUserInterface implements game.UserInterface {
+public class RealUserInterface implements UserInterface {
 
     private final Console console;
     private Language language;
@@ -21,8 +21,8 @@ public class RealUserInterface implements game.UserInterface {
         print(goodbye());
     }
 
-    public void communicateWinner(Move computerChoice, Rules rules) {
-        print(showComputerChoice(language.communicateComputerChoice(computerChoice)) + announceGameEnd(rules.gameEndState()));
+    public void communicateWinner(Move computerChoice, GameEnd gameEnd) {
+        print(showComputerChoice(language.communicateComputerChoice(computerChoice)) + announceGameEnd(gameEnd));
     }
 
     public Move humanChoice() {
