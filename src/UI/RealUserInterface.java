@@ -1,8 +1,5 @@
 package UI;
-import game.Console;
-import game.GameEnd;
-import game.Move;
-import game.UserInterface;
+import game.*;
 
 public class RealUserInterface implements UserInterface {
 
@@ -25,7 +22,7 @@ public class RealUserInterface implements UserInterface {
         print(announceGameEnd(gameEnd));
     }
 
-    public Move humanChoice() {
+    public UserChoice humanChoice() {
         print(askForHumanChoice());
         return getUserInput();
     }
@@ -34,9 +31,9 @@ public class RealUserInterface implements UserInterface {
         print(language.communicateComputerChoice() + language.translateComputerChoice(choice));
     }
 
-    private Move getUserInput() {
+    private UserChoice getUserInput() {
         String move = readUserInput();
-        Move convertedMove = convertUserInputToEnum(move);
+        UserChoice convertedMove = convertUserInputToEnum(move);
 
         if (convertedMove == null) {
             return humanChoice();
@@ -45,19 +42,20 @@ public class RealUserInterface implements UserInterface {
         }
     }
 
-    private Move convertUserInputToEnum(String move) {
-        Move returnedMove = null;
+    private UserChoice convertUserInputToEnum(String move) {
+        UserChoice userInput = null;
+        UserChoice userChoice = new UserChoice(null, null);
         switch (move) {
-            case "1": returnedMove = Move.ROCK;
+            case "1": userInput = userChoice.addNewMove(Move.ROCK);
                 break;
-            case "2": returnedMove = Move.SCISSORS;
+            case "2": userInput = userChoice.addNewMove(Move.SCISSORS);
                 break;
-            case "3": returnedMove = Move.PAPER;
+            case "3": userInput = userChoice.addNewMove(Move.PAPER);
                 break;
-            case "4": returnedMove = Move.EXIT;
+            case "4": userInput = userChoice.addGameControl(GameControls.EXIT);
                 break;
         }
-        return returnedMove;
+        return userInput;
     }
 
     private String readUserInput() {

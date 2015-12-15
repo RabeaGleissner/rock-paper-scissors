@@ -2,8 +2,6 @@ package game;
 import org.junit.Before;
 import org.junit.Test;
 
-import static game.Move.EXIT;
-import static game.Move.ROCK;
 import static game.Move.SCISSORS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -24,7 +22,8 @@ public class GameTest {
 
     @Test
     public void announcesHumanAsWinner() {
-        user.plays(ROCK, EXIT);
+        UserChoice userChoice = new UserChoice(null, GameControls.EXIT);
+        user.plays(userChoice);
         computer.plays(SCISSORS);
         game.play();
         assertTrue(user.sayByeWasCalled);
