@@ -14,13 +14,13 @@ public class Game {
     public void play() {
         userInterface.chooseLanguage();
         while (true) {
-            Move humanChoice = userInterface.humanChoice();
+            UserChoice userChoice = userInterface.humanChoice();
 
-            if (userQuits(humanChoice)) {
+            if (userChoice.userQuits()) {
                 userInterface.sayBye();
                 break;
             }
-            GameEnd gameState = evaluateGameState(humanChoice, computerMove());
+            GameEnd gameState = evaluateGameState(userChoice.getMove(), computerMove());
             announceGameEnd(gameState);
         }
     }
@@ -40,7 +40,4 @@ public class Game {
         return computerChoice;
     }
 
-    private boolean userQuits(Move humanChoice) {
-        return humanChoice.equals(Move.EXIT);
-    }
 }

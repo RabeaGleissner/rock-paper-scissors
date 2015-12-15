@@ -1,8 +1,5 @@
 package UI;
-import game.FakeConsole;
-import game.GameEnd;
-import game.Move;
-import game.Rules;
+import game.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,31 +48,36 @@ public class RealUserInterfaceTest {
     @Test
     public void getUserInputRock() {
         fakeConsole.provideUserChoice("1");
-        assertEquals(Move.ROCK, realUserInterface.humanChoice());
+        UserChoice userChoice = realUserInterface.humanChoice();
+        assertEquals(Move.ROCK, userChoice.getMove());
     }
 
     @Test
     public void getUserInputScissors() {
         fakeConsole.provideUserChoice("2");
-        assertEquals(Move.SCISSORS, realUserInterface.humanChoice());
+        UserChoice userChoice = realUserInterface.humanChoice();
+        assertEquals(Move.SCISSORS, userChoice.getMove());
     }
 
     @Test
     public void getUserInputPaper() {
         fakeConsole.provideUserChoice("3");
-        assertEquals(Move.PAPER, realUserInterface.humanChoice());
+        UserChoice userChoice = realUserInterface.humanChoice();
+        assertEquals(Move.PAPER, userChoice.getMove());
     }
 
     @Test
     public void getUserInputExit() {
         fakeConsole.provideUserChoice("4");
-        assertEquals(Move.EXIT, realUserInterface.humanChoice());
+        UserChoice userChoice = realUserInterface.humanChoice();
+        assertTrue(userChoice.userQuits());
     }
 
     @Test
     public void returnUserSelection() {
         fakeConsole.provideUserChoice("1");
-        assertEquals(Move.ROCK, realUserInterface.humanChoice());
+        UserChoice userChoice = realUserInterface.humanChoice();
+        assertEquals(Move.ROCK, userChoice.getMove());
     }
 
     @Test

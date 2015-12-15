@@ -1,7 +1,7 @@
 package game;
 
 public interface UserInterface {
-    Move humanChoice();
+    UserChoice humanChoice();
     void communicateWinner(GameEnd gameEnd);
     void sayBye();
     void chooseLanguage();

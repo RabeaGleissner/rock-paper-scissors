@@ -8,15 +8,17 @@ public class FakeUserInterface implements UserInterface {
 
     public boolean communicateWinnerWasCalled = false;
     public boolean sayByeWasCalled = false;
-    private List<Move> moves = new LinkedList<>();
+    private List<UserChoice> moves = new LinkedList<>();
     public boolean chooseLanguageWasCalled = false;
+    public GameEnd gameEnd = null;
 
-    public Move humanChoice() {
+    public UserChoice humanChoice() {
       return moves.remove(0);
     }
 
     public void communicateWinner(GameEnd gameEnd) {
         communicateWinnerWasCalled = true;
+        this.gameEnd = gameEnd;
     }
 
     public void sayBye() {
@@ -32,11 +34,15 @@ public class FakeUserInterface implements UserInterface {
     public void showComputerChoice(Move choice) {
     }
 
-    public void plays(Move ... move) {
-        moves.addAll(Arrays.asList(move));
+    public void plays(UserChoice... userChoices) {
+        moves.addAll(Arrays.asList(userChoices));
     }
 
     public void userWantsToExit() {
-        moves.add(Move.EXIT);
+        moves.add(new Exit());
+    }
+
+    public boolean computerHasWon() {
+        return gameEnd == GameEnd.COMPUTER_WIN;
     }
 }

@@ -1,8 +1,7 @@
 package UI;
-import game.Console;
-import game.GameEnd;
-import game.Move;
-import game.UserInterface;
+import game.*;
+
+import static game.Move.*;
 
 public class RealUserInterface implements UserInterface {
 
@@ -25,7 +24,7 @@ public class RealUserInterface implements UserInterface {
         print(announceGameEnd(gameEnd));
     }
 
-    public Move humanChoice() {
+    public UserChoice humanChoice() {
         print(askForHumanChoice());
         return getUserInput();
     }
@@ -34,9 +33,9 @@ public class RealUserInterface implements UserInterface {
         print(language.communicateComputerChoice() + language.translateComputerChoice(choice));
     }
 
-    private Move getUserInput() {
+    private UserChoice getUserInput() {
         String move = readUserInput();
-        Move convertedMove = convertUserInputToEnum(move);
+        UserChoice convertedMove = convertUserInputToEnum(move);
 
         if (convertedMove == null) {
             return humanChoice();
@@ -45,19 +44,15 @@ public class RealUserInterface implements UserInterface {
         }
     }
 
-    private Move convertUserInputToEnum(String move) {
-        Move returnedMove = null;
+    private UserChoice convertUserInputToEnum(String move) {
         switch (move) {
-            case "1": returnedMove = Move.ROCK;
-                break;
-            case "2": returnedMove = Move.SCISSORS;
-                break;
-            case "3": returnedMove = Move.PAPER;
-                break;
-            case "4": returnedMove = Move.EXIT;
-                break;
+            case "1": return new MoveChoice(ROCK);
+            case "2": return new MoveChoice(SCISSORS);
+            case "3": return new MoveChoice(PAPER);
+            case "4": return new Exit();
+            default:
+                return null;
         }
-        return returnedMove;
     }
 
     private String readUserInput() {
@@ -69,7 +64,7 @@ public class RealUserInterface implements UserInterface {
     }
 
     private String announceGameEnd(GameEnd gameEnd) {
-        if (gameEnd == GameEnd.DRAW) {
+        if (gameEnd.isDraw()) {
             return language.draw();
         } else {
             return language.winner(gameEnd);

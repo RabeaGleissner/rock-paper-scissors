@@ -31,10 +31,8 @@ public class Rules {
             return PAPER;
         } else if (rockWins()) {
             return ROCK;
-        } else if (scissorsWin()) {
+        } else  {
             return SCISSORS;
-        } else {
-            return null;
         }
     }
 
@@ -46,11 +44,6 @@ public class Rules {
     private boolean rockWins() {
         return ((humanChoice == ROCK) && (computerChoice == SCISSORS)) ||
                 ((humanChoice == SCISSORS) && (computerChoice == ROCK));
-    }
-
-    private boolean scissorsWin() {
-        return ((humanChoice == PAPER) && (computerChoice == SCISSORS)) ||
-                ((humanChoice == SCISSORS) && (computerChoice == PAPER));
     }
 
     private boolean draw() {
