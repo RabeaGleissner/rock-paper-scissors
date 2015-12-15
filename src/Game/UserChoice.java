@@ -17,15 +17,6 @@ public class UserChoice {
         return terminate;
     }
 
-    public UserChoice addNewMove(Move move) {
-        return new UserChoice(move, null);
-    }
-
-    public UserChoice addGameControl(GameControls selection) {
-
-        return new UserChoice(null, selection);
-    }
-
     boolean userQuits() {
         return GameControls.EXIT == getTerminate();
     }
