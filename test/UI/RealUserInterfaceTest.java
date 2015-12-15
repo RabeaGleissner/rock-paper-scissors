@@ -70,7 +70,7 @@ public class RealUserInterfaceTest {
     public void getUserInputExit() {
         fakeConsole.provideUserChoice("4");
         UserChoice userChoice = realUserInterface.humanChoice();
-        assertEquals(GameControls.EXIT, userChoice.getTerminate());
+        assertTrue(userChoice.userQuits());
     }
 
     @Test

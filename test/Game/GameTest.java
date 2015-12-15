@@ -23,7 +23,7 @@ public class GameTest {
 
     @Test
     public void announcesHumanAsWinner() {
-        user.plays(new UserChoice.MoveChoice(Move.ROCK), new UserChoice.Exit(GameControls.EXIT));
+        user.plays(new MoveChoice(Move.ROCK), new Exit());
         computer.plays(SCISSORS);
         game.play();
         assertTrue(user.sayByeWasCalled);
@@ -31,7 +31,7 @@ public class GameTest {
 
     @Test
     public void announcesComputerAsWinner() {
-        user.plays(new UserChoice.MoveChoice(Move.ROCK), new UserChoice.Exit(GameControls.EXIT));
+        user.plays(new MoveChoice(Move.ROCK), new Exit());
         computer.plays(PAPER);
         game.play();
         assertTrue(user.computerHasWon());

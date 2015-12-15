@@ -1,6 +1,8 @@
 package UI;
 import game.*;
 
+import static game.Move.*;
+
 public class RealUserInterface implements UserInterface {
 
     private final Console console;
@@ -43,14 +45,13 @@ public class RealUserInterface implements UserInterface {
     }
 
     private UserChoice convertUserInputToEnum(String move) {
-        UserChoice userChoice = new UserChoice(null, null);
         switch (move) {
-            case "1": return new UserChoice.MoveChoice(Move.ROCK);
-            case "2": return new UserChoice.MoveChoice(Move.SCISSORS);
-            case "3": return new UserChoice.MoveChoice(Move.PAPER);
-            case "4": return new UserChoice.Exit(GameControls.EXIT);
+            case "1": return new MoveChoice(ROCK);
+            case "2": return new MoveChoice(SCISSORS);
+            case "3": return new MoveChoice(PAPER);
+            case "4": return new Exit();
             default:
-                return userChoice;
+                return null;
         }
     }
 
