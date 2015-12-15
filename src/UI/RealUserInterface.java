@@ -43,19 +43,15 @@ public class RealUserInterface implements UserInterface {
     }
 
     private UserChoice convertUserInputToEnum(String move) {
-        UserChoice userInput = null;
         UserChoice userChoice = new UserChoice(null, null);
         switch (move) {
-            case "1": userInput = userChoice.addNewMove(Move.ROCK);
-                break;
-            case "2": userInput = userChoice.addNewMove(Move.SCISSORS);
-                break;
-            case "3": userInput = userChoice.addNewMove(Move.PAPER);
-                break;
-            case "4": userInput = userChoice.addGameControl(GameControls.EXIT);
-                break;
+            case "1": return new UserChoice.MoveChoice(Move.ROCK);
+            case "2": return new UserChoice.MoveChoice(Move.SCISSORS);
+            case "3": return new UserChoice.MoveChoice(Move.PAPER);
+            case "4": return new UserChoice.Exit(GameControls.EXIT);
+            default:
+                return userChoice;
         }
-        return userInput;
     }
 
     private String readUserInput() {

@@ -39,8 +39,7 @@ public class FakeUserInterface implements UserInterface {
     }
 
     public void userWantsToExit() {
-        UserChoice userChoice = new UserChoice(null, GameControls.EXIT);
-        moves.add(userChoice.addGameControl(GameControls.EXIT));
+        moves.add(new UserChoice.Exit(GameControls.EXIT));
     }
 
     public boolean computerHasWon() {
