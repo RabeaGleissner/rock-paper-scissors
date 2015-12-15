@@ -10,7 +10,7 @@ public class ComputerPlayer {
 
     public Move generateMove() {
         Move[] options = Move.values();
-        int index = randomCalc.randomNumber(options.length - 1);
+        int index = randomCalc.randomNumber(options.length);
         return options[index];
     }
 }
