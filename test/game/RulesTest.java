@@ -57,10 +57,4 @@ public class RulesTest {
         Rules rules = new Rules(Move.PAPER, Move.PAPER);
         assertEquals(GameEnd.DRAW, rules.gameEndState());
     }
-
-    @Test
-    public void errorMessage() {
-        Rules rules = new Rules(Move.EXIT, Move.PAPER);
-        assertEquals(null, rules.gameEndState());
-    }
 }
