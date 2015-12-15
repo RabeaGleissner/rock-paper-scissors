@@ -15,7 +15,7 @@ public class FakeUserInterface implements UserInterface {
       return moves.remove(0);
     }
 
-    public void communicateWinner(Move computerChoice, GameEnd gameEnd) {
+    public void communicateWinner(GameEnd gameEnd) {
         communicateWinnerWasCalled = true;
     }
 
@@ -26,6 +26,10 @@ public class FakeUserInterface implements UserInterface {
     @Override
     public void chooseLanguage() {
         chooseLanguageWasCalled = true;
+    }
+
+    @Override
+    public void showComputerChoice(Move choice) {
     }
 
     public void plays(Move ... move) {

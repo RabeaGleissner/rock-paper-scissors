@@ -34,7 +34,7 @@ public class EnglishLanguageTest {
 
     @Test
     public void computerChoice() {
-        assertEquals("Computer choice was: ", english.computerChoice());
+        assertEquals("Computer choice was: ", english.communicateComputerChoice());
 
     }
 
@@ -52,17 +52,17 @@ public class EnglishLanguageTest {
 
     @Test
     public void communicateComputerChoicePaper() {
-        assertEquals("paper", english.communicateComputerChoice(Move.PAPER));
+        assertEquals("paper", english.translateComputerChoice(Move.PAPER));
     }
 
     @Test
     public void communicateComputerChoiceRock() {
-        assertEquals("rock", english.communicateComputerChoice(Move.ROCK));
+        assertEquals("rock", english.translateComputerChoice(Move.ROCK));
     }
 
     @Test
     public void communicateComputerChoiceScissors() {
-        assertEquals("scissors", english.communicateComputerChoice(Move.SCISSORS));
+        assertEquals("scissors", english.translateComputerChoice(Move.SCISSORS));
     }
 
     @Test

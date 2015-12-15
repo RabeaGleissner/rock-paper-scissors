@@ -31,10 +31,15 @@ public class RealUserInterfaceTest {
     }
 
     @Test
+    public void communicateWinner() {
+        realUserInterface.communicateWinner(GameEnd.COMPUTER_WIN);
+        assertEquals("\n\nWinner", fakeConsole.messagePrinted());
+    }
+
+    @Test
     public void showComputerChoice() {
-        // should not communicate computer choice
-        realUserInterface.communicateWinner(Move.ROCK, GameEnd.COMPUTER_WIN);
-        assertEquals("Computer choice:rock\n\nWinner", fakeConsole.messagePrinted());
+        realUserInterface.showComputerChoice(Move.ROCK);
+        assertEquals("Computer choice:rock", fakeConsole.messagePrinted());
     }
 
     @Test
@@ -75,15 +80,15 @@ public class RealUserInterfaceTest {
 
     @Test
     public void communicateDraw() {
-        realUserInterface.communicateWinner(Move.ROCK, GameEnd.DRAW);
-        assertEquals("Computer choice:rock\n\nDraw", fakeConsole.messagePrinted());
+        realUserInterface.communicateWinner(GameEnd.DRAW);
+        assertEquals("\n\nDraw", fakeConsole.messagePrinted());
 
     }
 
     @Test
     public void communicateWinnerHuman() {
-        realUserInterface.communicateWinner(Move.ROCK, GameEnd.COMPUTER_WIN);
-        assertEquals("Computer choice:rock\n\nWinner", fakeConsole.messagePrinted());
+        realUserInterface.communicateWinner(GameEnd.COMPUTER_WIN);
+        assertEquals("\n\nWinner", fakeConsole.messagePrinted());
 
     }
 

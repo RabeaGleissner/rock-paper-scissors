@@ -21,13 +21,17 @@ public class RealUserInterface implements UserInterface {
         print(goodbye());
     }
 
-    public void communicateWinner(Move computerChoice, GameEnd gameEnd) {
-        print(showComputerChoice(language.communicateComputerChoice(computerChoice)) + announceGameEnd(gameEnd));
+    public void communicateWinner(GameEnd gameEnd) {
+        print(announceGameEnd(gameEnd));
     }
 
     public Move humanChoice() {
         print(askForHumanChoice());
         return getUserInput();
+    }
+
+    public void showComputerChoice(Move choice) {
+        print(language.communicateComputerChoice() + language.translateComputerChoice(choice));
     }
 
     private Move getUserInput() {
@@ -62,10 +66,6 @@ public class RealUserInterface implements UserInterface {
 
     private String askForHumanChoice() {
         return language.userPrompt();
-    }
-
-    private String showComputerChoice(String choice) {
-        return language.computerChoice()+ choice;
     }
 
     private String announceGameEnd(GameEnd gameEnd) {

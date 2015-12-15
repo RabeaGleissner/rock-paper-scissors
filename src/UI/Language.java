@@ -7,8 +7,8 @@ public interface Language {
     String userPrompt();
     String draw();
     String winner(GameEnd gameEnd);
-    String computerChoice();
+    String communicateComputerChoice();
     String goodbye();
     String languagePreference();
-    String communicateComputerChoice(Move computerChoice);
+    String translateComputerChoice(Move computerChoice);
 }

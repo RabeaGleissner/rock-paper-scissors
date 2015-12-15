@@ -31,7 +31,7 @@ public class FakeLanguage implements Language{
     }
 
     @Override
-    public String computerChoice() {
+    public String communicateComputerChoice() {
         return COMPUTER_CHOICE;
     }
 
@@ -46,7 +46,7 @@ public class FakeLanguage implements Language{
     }
 
     @Override
-    public String communicateComputerChoice(Move computerChoice) {
+    public String translateComputerChoice(Move computerChoice) {
         String move;
         if (computerChoice == Move.ROCK) {
             move = ROCK;
