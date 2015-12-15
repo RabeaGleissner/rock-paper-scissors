@@ -22,6 +22,24 @@ public class UserChoice {
     }
 
     public UserChoice addGameControl(GameControls selection) {
+
         return new UserChoice(null, selection);
     }
+
+    boolean userQuits() {
+        return GameControls.EXIT == getTerminate();
+    }
+
+    public static class MoveChoice extends UserChoice {
+        public MoveChoice(Move move) {
+            super(move, null);
+       }
+    }
+
+    public static class Exit extends UserChoice {
+        public Exit(GameControls terminate) {
+            super(null, terminate);
+        }
+    }
 }
+

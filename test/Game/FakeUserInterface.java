@@ -10,6 +10,7 @@ public class FakeUserInterface implements UserInterface {
     public boolean sayByeWasCalled = false;
     private List<UserChoice> moves = new LinkedList<>();
     public boolean chooseLanguageWasCalled = false;
+    public GameEnd gameEnd = null;
 
     public UserChoice humanChoice() {
       return moves.remove(0);
@@ -17,6 +18,7 @@ public class FakeUserInterface implements UserInterface {
 
     public void communicateWinner(GameEnd gameEnd) {
         communicateWinnerWasCalled = true;
+        this.gameEnd = gameEnd;
     }
 
     public void sayBye() {
@@ -39,5 +41,9 @@ public class FakeUserInterface implements UserInterface {
     public void userWantsToExit() {
         UserChoice userChoice = new UserChoice(null, GameControls.EXIT);
         moves.add(userChoice.addGameControl(GameControls.EXIT));
+    }
+
+    public boolean computerHasWon() {
+        return gameEnd == GameEnd.COMPUTER_WIN;
     }
 }

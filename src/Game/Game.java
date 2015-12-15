@@ -16,7 +16,7 @@ public class Game {
         while (true) {
             UserChoice userChoice = userInterface.humanChoice();
 
-            if (userQuits(userChoice)) {
+            if (userChoice.userQuits()) {
                 userInterface.sayBye();
                 break;
             }
@@ -40,7 +40,4 @@ public class Game {
         return computerChoice;
     }
 
-    private boolean userQuits(UserChoice userChoice) {
-        return GameControls.EXIT == userChoice.getTerminate();
-    }
 }

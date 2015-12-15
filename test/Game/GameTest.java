@@ -2,6 +2,7 @@ package game;
 import org.junit.Before;
 import org.junit.Test;
 
+import static game.Move.PAPER;
 import static game.Move.SCISSORS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -22,15 +23,22 @@ public class GameTest {
 
     @Test
     public void announcesHumanAsWinner() {
-        UserChoice userChoice = new UserChoice(null, GameControls.EXIT);
-        user.plays(userChoice);
+        user.plays(new UserChoice.MoveChoice(Move.ROCK), new UserChoice.Exit(GameControls.EXIT));
         computer.plays(SCISSORS);
         game.play();
         assertTrue(user.sayByeWasCalled);
     }
 
     @Test
-    public void exitWhenUserEntersE() {
+    public void announcesComputerAsWinner() {
+        user.plays(new UserChoice.MoveChoice(Move.ROCK), new UserChoice.Exit(GameControls.EXIT));
+        computer.plays(PAPER);
+        game.play();
+        assertTrue(user.computerHasWon());
+    }
+
+    @Test
+    public void exitWhenUserAsksForExit() {
         user.userWantsToExit();
         game.play();
         assertEquals(true, user.sayByeWasCalled);
@@ -44,7 +52,7 @@ public class GameTest {
     }
 
     public static class FakeComputerPlayer extends ComputerPlayer {
-        private Move scissors;
+        private Move computerMove;
 
         public FakeComputerPlayer() {
             super(null);
@@ -52,11 +60,12 @@ public class GameTest {
 
         @Override
         public Move generateMove() {
-            return scissors;
+            return computerMove;
         }
 
         public void plays(Move scissors) {
-            this.scissors = scissors;
+            this.computerMove = scissors;
         }
     }
+
 }
