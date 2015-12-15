@@ -64,7 +64,7 @@ public class RealUserInterface implements UserInterface {
     }
 
     private String announceGameEnd(GameEnd gameEnd) {
-        if (gameEnd == GameEnd.DRAW) {
+        if (gameEnd.isDraw()) {
             return language.draw();
         } else {
             return language.winner(gameEnd);
